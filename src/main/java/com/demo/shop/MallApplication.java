@@ -8,8 +8,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @MapperScan("com.demo.shop.mapper")
-public class GraduateApplication {
+public class MallApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GraduateApplication.class, args);
+        SpringApplication.run(MallApplication.class, args);
     }
 }
