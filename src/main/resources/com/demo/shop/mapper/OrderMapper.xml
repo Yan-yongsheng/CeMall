@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.shop.mapper.OrderMapper">
+
+    <select id="getOrderRate" resultType="ServiceRate">
+        select serviceId as id,AVG(qualityScore) as qualityScore,
+                AVG(speedScore) as speedScore,AVG(attitudeScore) as attitudeScore
+                FROM rating_total WHERE createTime > DATE_SUB(CURDATE(), INTERVAL 3 MONTH)
+                GROUP BY serviceId
+    </select>
+
+    <insert id="submitComment">
+--      id自增，需要怎么写并且后续好查询呢？
+        insert into rating_total (serviceId, userId,qualityScore,speedScore,attitudeScore,comment) values
+            ( #{serviceId},#{userId},#{qualityScore}, #{speedScore},#{attitudeScore},#{comment});
+    </insert>
+</mapper>

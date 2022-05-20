@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.shop.mapper.ServiceTotalMapper">
+    <resultMap id="categoryMap" type="Category">
+        <result property="categoryOne" column="category_one"></result>
+        <collection property="subCategory" ofType="SubCategory">
+            <result property="categoryTwo" column="category_two"></result>
+            <result property="nums" column="nums"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getCategories" resultMap="categoryMap">
+        select category_one,category_two,count(*) as nums from service_total GROUP BY category_one,category_two
+    </select>
+
+    <select id="getCategoryContent" resultType="CategoryContent">
+        select id,category_three,institution_title,service_title,detection_item,service_url,service_detail,quality_score,speed_score,attitude_score,price,cycle
+        from service_total where category_one=#{categoryOne} and category_two=#{categoryTwo}
+    </select>
+</mapper>
