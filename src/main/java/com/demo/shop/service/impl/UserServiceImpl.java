@@ -21,6 +21,8 @@ import java.util.Random;
  */
 @Service
 public class UserServiceImpl implements UserService {
+    //还得加 查看自己的历史订单（包括还没完成的） 通过这个可以获得orderId号码和serviceId
+    //
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     @Resource
     UserMapper userMapper;
