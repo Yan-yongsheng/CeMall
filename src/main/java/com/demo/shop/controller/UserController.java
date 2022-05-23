@@ -30,16 +30,11 @@ public class UserController {
     @CrossOrigin("*")
     ReturnData register(@RequestBody User user) {
         try {
-            int res = userService.register(user.getAccount(), user.getPassword(), user.getCategory(),
-                    user.getPhone(),user.getMail());
+            userService.register(user.getAccount(), user.getPassword(), user.getCategory());
             logger.info("注册 账号：{} 密码：{} 类别 :{}",user.getAccount(),user.getPassword(), user.getCategory());
-            if(res==1) {
-                return new ReturnData<>(StateCode.SUCCESS.getCode(),
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
                         StateCode.SUCCESS.getMsg(), "注册成功");
-            } else {
-                return new ReturnData<>(StateCode.FAIL.getCode(),
-                        StateCode.FAIL.getMsg(), "注册失败");
-            }
+
         }catch (Exception e){
             logger.error("[register] :{}",e);
             return new ReturnData<>(StateCode.FAIL.getCode(),
@@ -56,8 +51,9 @@ public class UserController {
             logger.info("登录 账号：{} 密码：{} 类别： {} 结果:{}",user.getAccount(),user.getPassword(), user.getCategory(),res);
 
             if(res==1) {
+                //返回前端身份类别，方便根据数据跳转
                 return new ReturnData<>(StateCode.SUCCESS.getCode(),
-                        StateCode.SUCCESS.getMsg(), "登录成功");
+                        StateCode.SUCCESS.getMsg(), user.getCategory());
             } else {
                 return new ReturnData<>(StateCode.FAIL.getCode(),
                         StateCode.FAIL.getMsg(), "登录失败");

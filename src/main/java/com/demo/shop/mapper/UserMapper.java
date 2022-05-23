@@ -13,7 +13,7 @@ import java.util.Date;
  */
 @Mapper
 public interface UserMapper extends BaseMapper<OrderTotal> {
-    int register(String userId,String account, String password,String category,String phone,String mail);
+    int register(String userId,String account, String password,String category);
 
     int login(String account, String password,String category);
 

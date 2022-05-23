@@ -15,10 +15,8 @@ import java.util.List;
  */
 @Repository
 public interface ExpertMapper extends BaseMapper<OrderTotal> {
-    void updateWeight(@Param("expertId") String expertId,@Param("name") String name,@Param("phone") String phone,
-                      @Param("mail") String mail, @Param("quality") String quality,
-                      @Param("speed") String speed, @Param("attitude") String attitude,
-                      @Param("service") String service,@Param("organization") String organization,
+    void updateWeight(@Param("account") String account, @Param("quality") Integer quality,
+                      @Param("speed") Integer speed, @Param("attitude") Integer attitude,
                       @Param("createTime") Date createTime);
 }
 

@@ -12,9 +12,8 @@
                 GROUP BY serviceId
     </select>
 
-    <insert id="submitComment">
---      id自增，需要怎么写并且后续好查询呢？
-        insert into rating_total (serviceId, userId,qualityScore,speedScore,attitudeScore,comment) values
-            ( #{serviceId},#{userId},#{qualityScore}, #{speedScore},#{attitudeScore},#{comment});
+    <insert id="updateWeight">
+        insert into weight_total (account, quality,speed,attitude,createTime) values
+            ( #{account},#{quality},#{speed}, #{attitude},#{createTime});
     </insert>
 </mapper>

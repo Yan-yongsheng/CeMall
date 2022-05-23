@@ -10,7 +10,7 @@ import lombok.Data;
  * @Date: 2022/5/19 19:31
  */
 @Data
-@TableName("user")
+@TableName("user_login")
 public class User {
 
     private static final long serialVersionUID = 1L;
@@ -25,7 +25,7 @@ public class User {
     private String category;
 
 
-    private String phone;
-
-    private String mail;
+//    private String phone;
+//
+//    private String mail;
 }

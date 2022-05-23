@@ -4,19 +4,16 @@ import lombok.Data;
 
 @Data
 public class RateWeightAdd {
-    private String name;
+    private String account;
 
-    private String phone;
 
-    private String mail;
+    private Integer quality;
 
-    private String quality;
+    private Integer speed;
 
-    private String speed;
+    private Integer attitude;
 
-    private String attitude;
-
-    private String service;
-
-    private String organization;
+//    private String service;
+//
+//    private String organization;
 }

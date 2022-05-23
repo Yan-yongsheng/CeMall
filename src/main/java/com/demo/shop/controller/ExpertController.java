@@ -23,15 +23,15 @@ public class ExpertController {
 
     @PostMapping("/uploadRateWeight/")
     @CrossOrigin("*")
-    ReturnData register(@RequestBody RateWeightAdd rateWeightAdd) {
+    ReturnData uploadRateWeight(@RequestBody RateWeightAdd rateWeightAdd) {
         try {
-            //需要获取对应专家的id,或者直接不用？
-            String expertId = "";
-            expertService.updateWeight(rateWeightAdd,expertId);
+            expertService.updateWeight(rateWeightAdd);
+            logger.info("[ExpertController.uploadRateWeight][success]");
             return new ReturnData<>(StateCode.SUCCESS.getCode(),
                         StateCode.SUCCESS.getMsg(), "更新权重成功");
 
         }catch (Exception e){
+            logger.error("[ExpertController.uploadRateWeight][error]",e);
             return new ReturnData<>(StateCode.FAIL.getCode(),
                     StateCode.FAIL.getMsg(), "更新权重失败");
         }

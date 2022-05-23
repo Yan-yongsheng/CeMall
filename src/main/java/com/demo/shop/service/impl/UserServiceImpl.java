@@ -27,9 +27,9 @@ public class UserServiceImpl implements UserService {
     @Resource
     UserMapper userMapper;
     @Override
-    public int register(String account, String password, String category,String phone,String mail) {
+    public void register(String account, String password, String category) {
         String userId = getUserId();
-        return userMapper.register(userId,account, password,category,phone,mail);
+        userMapper.register(userId,account, password,category);
     }
     @Override
     public int login(String account, String password, String category) {
