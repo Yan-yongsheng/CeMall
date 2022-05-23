@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 
 public interface UserService {
 
-    int register(String account, String password, String category);
+    void register(String account, String password, String category);
 
     int login(String account, String password, String category) ;
 

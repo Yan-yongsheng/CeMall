@@ -5,12 +5,12 @@
 
 <mapper namespace="com.demo.shop.mapper.UserMapper">
     <insert id="register">
-        insert into User (userId,account, password,category) values
+        insert into user_login (user_id,account, password,category) values
                         (#{userId},#{account}, #{password},#{category} );
     </insert>
 
     <select id="login" resultType="Integer">
-        select count(*) from User where account=#{account} and password=#{password} and category=#{category} ;
+        select count(*) from user_login where account=#{account} and password=#{password} and category=#{category} ;
     </select>
 <!--makeOrder(String orderId, String serviceId, String userId, String price, String cycle,Date date);-->
     <insert id="makeOrder">

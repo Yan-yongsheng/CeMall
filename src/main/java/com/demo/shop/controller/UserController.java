@@ -30,15 +30,11 @@ public class UserController {
     @CrossOrigin("*")
     ReturnData register(@RequestBody User user) {
         try {
-            int res = userService.register(user.getAccount(), user.getPassword(), user.getCategory());
+            userService.register(user.getAccount(), user.getPassword(), user.getCategory());
             logger.info("注册 账号：{} 密码：{} 类别 :{}",user.getAccount(),user.getPassword(), user.getCategory());
-            if(res==1) {
-                return new ReturnData<>(StateCode.SUCCESS.getCode(),
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
                         StateCode.SUCCESS.getMsg(), "注册成功");
-            } else {
-                return new ReturnData<>(StateCode.FAIL.getCode(),
-                        StateCode.FAIL.getMsg(), "注册失败");
-            }
+
         }catch (Exception e){
             logger.error("[register] :{}",e);
             return new ReturnData<>(StateCode.FAIL.getCode(),

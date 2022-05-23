@@ -1,0 +1,6 @@
+CREATE TABLE `user_login` (
+`user_id` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `account` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+	`category` varchar(255) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

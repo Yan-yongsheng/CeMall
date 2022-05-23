@@ -10,14 +10,14 @@ import lombok.Data;
  * @Date: 2022/5/19 19:31
  */
 @Data
-@TableName("user")
+@TableName("user_login")
 public class User {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private int id;
-//    private String userId;
+    private String userId;
 
     private String account;
     private String password;
