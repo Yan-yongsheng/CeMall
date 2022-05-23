@@ -5,8 +5,8 @@
 
 <mapper namespace="com.demo.shop.mapper.UserMapper">
     <insert id="register">
-        insert into User (userId,account, password,category,phone,mail) values
-                        (#{userId},#{account}, #{password},#{category} ,#{phone},#{mail});
+        insert into User (userId,account, password,category) values
+                        (#{userId},#{account}, #{password},#{category} );
     </insert>
 
     <select id="login" resultType="Integer">

@@ -17,7 +17,7 @@ public class User {
 
     @TableId(value = "id", type = IdType.AUTO)
     private int id;
-    private String userId;
+//    private String userId;
 
     private String account;
     private String password;
@@ -25,7 +25,7 @@ public class User {
     private String category;
 
 
-    private String phone;
-
-    private String mail;
+//    private String phone;
+//
+//    private String mail;
 }
