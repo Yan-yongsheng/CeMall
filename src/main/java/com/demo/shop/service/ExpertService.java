@@ -9,6 +9,6 @@ import org.apache.lucene.search.TopDocs;
 import java.util.List;
 
 public interface ExpertService {
-    void updateWeight(RateWeightAdd rateWeightAdd,String expertId);
+    void updateWeight(RateWeightAdd rateWeightAdd);
 
 }

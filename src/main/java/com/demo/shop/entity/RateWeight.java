@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,23 +23,18 @@ public class RateWeight implements Serializable {
     private int id;
 
 
-    private String expertId;
+    private String account;
 
-    private String name;
 
-    private String phone;
+    private Integer quality;
 
-    private String mail;
+    private Integer speed;
 
-    private String quality;
+    private Integer attitude;
 
-    private String speed;
-
-    private String attitude;
-
-    private String service;
-
-    private String organization;
+//    private String service;
+//
+//    private String organization;
 
     private Date createTime;
 

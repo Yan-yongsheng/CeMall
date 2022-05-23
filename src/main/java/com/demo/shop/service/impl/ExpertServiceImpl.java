@@ -20,8 +20,8 @@ public class ExpertServiceImpl implements ExpertService {
     @Autowired
     ExpertMapper expertMapper;
     @Override
-    public void updateWeight(RateWeightAdd rateWeightAdd, String expertId){
-        expertMapper.updateWeight(expertId, rateWeightAdd.getName(), rateWeightAdd.getPhone(), rateWeightAdd.getMail(),
-                rateWeightAdd.getQuality(), rateWeightAdd.getSpeed(), rateWeightAdd.getAttitude(), rateWeightAdd.getService(), rateWeightAdd.getOrganization(), new Date());
+    public void updateWeight(RateWeightAdd rateWeightAdd){
+        expertMapper.updateWeight(rateWeightAdd.getAccount(),
+                rateWeightAdd.getQuality(), rateWeightAdd.getSpeed(), rateWeightAdd.getAttitude(), new Date());
     }
 }
