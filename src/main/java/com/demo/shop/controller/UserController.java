@@ -49,8 +49,8 @@ public class UserController {
         try {
             int res = userService.login(user.getAccount(), user.getPassword(), user.getCategory());
             logger.info("登录 账号：{} 密码：{} 类别： {} 结果:{}",user.getAccount(),user.getPassword(), user.getCategory(),res);
-
-            if(res==1) {
+            //防止多次注册 只要有就登录
+            if(res>=1) {
                 //返回前端身份类别，方便根据数据跳转
                 return new ReturnData<>(StateCode.SUCCESS.getCode(),
                         StateCode.SUCCESS.getMsg(), user.getCategory());
