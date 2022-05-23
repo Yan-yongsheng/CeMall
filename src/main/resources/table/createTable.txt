@@ -1,6 +1,7 @@
 
 注册登录表
 CREATE TABLE `user_login` (
+`id` int COLLATE utf8_bin primary key auto_increment,
 `user_id` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `account` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `password` varchar(255) COLLATE utf8_bin DEFAULT NULL,
@@ -9,6 +10,7 @@ CREATE TABLE `user_login` (
 
 专家权重表
 CREATE TABLE `weight_total` (
+`id` int COLLATE utf8_bin primary key auto_increment,
   `account` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `quality` int COLLATE utf8_bin DEFAULT 34,
 `speed` int COLLATE utf8_bin DEFAULT 33,
