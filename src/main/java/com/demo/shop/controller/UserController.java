@@ -8,10 +8,7 @@ import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -20,14 +17,15 @@ import javax.annotation.Resource;
  * @Date: 2022/5/19 19:29
  */
 @RestController
+@RequestMapping("/user")
 public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Resource
     UserService userService;
 
 
-    @PostMapping("/register/")
-    @CrossOrigin("*")
+    @PostMapping("/register")
+//    @CrossOrigin("*")  本地不用跨域
     ReturnData register(@RequestBody User user) {
         try {
             userService.register(user.getAccount(), user.getPassword(), user.getCategory());
@@ -43,8 +41,8 @@ public class UserController {
 
     }
 
-    @PostMapping("/login/")
-    @CrossOrigin("*")
+    @PostMapping("/login")
+        //    @CrossOrigin("*")  本地不用跨域
     ReturnData login(@RequestBody User user) {
         try {
             int res = userService.login(user.getAccount(), user.getPassword(), user.getCategory());
@@ -65,8 +63,8 @@ public class UserController {
         }
 
     }
-    @PostMapping("/makeOrder/")
-    @CrossOrigin("*")
+    @PostMapping("/makeOrder")
+//    @CrossOrigin("*")
     ReturnData makeOrder(@RequestBody OrderDemandAdd orderDemandAdd) {
         try {
             userService.makeOrder(orderDemandAdd);
@@ -81,8 +79,8 @@ public class UserController {
 
     }
     //提交评分
-    @PostMapping("/submit/comment/")
-    @CrossOrigin("*")
+    @PostMapping("/comment")
+//    @CrossOrigin("*")
     ReturnData submitComment(@RequestBody OrderTotal orderTotal) {
         try {
             userService.completeOrder(orderTotal.getOrderId(),orderTotal.getServiceId(),orderTotal.getUserId());

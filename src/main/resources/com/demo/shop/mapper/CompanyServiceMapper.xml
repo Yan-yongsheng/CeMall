@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.shop.mapper.CompanyServiceMapper">
+
+    <select id="myService" resultType="ServiceFind">
+        select service_id as serviceId,detect_company as detectCompany,detect_object as detectObject,
+               detect_project as detectProject,detect_price as detectPrice,detect_time as detectTime,
+               detect_standard as detectStandard,detect_score as detectScore
+                FROM service WHERE detect_company = #{detectCompany}
+    </select>
+
+    <insert id="updateService">
+        insert into service (service_id,detect_company,detect_object,detect_project,
+                             detect_price,detect_time,detect_standard,create_time,update_time) values
+            ( #{serviceId},#{detectCompany},#{detectObject}, #{detectProject},
+             #{detectPrice} ,#{detectTime},#{detectStandard},#{createTime},#{updateTime});
+    </insert>
+</mapper>
