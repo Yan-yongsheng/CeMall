@@ -1,6 +1,5 @@
 package com.demo.shop.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.common.StateCode;
 import com.demo.shop.entity.OrderTotal;
@@ -9,7 +8,10 @@ import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -18,9 +20,9 @@ import javax.annotation.Resource;
  * @Date: 2022/5/19 19:29
  */
 @RestController
-@RequestMapping("/user")
-public class UserController {
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+@RequestMapping("/admin")
+public class AdminController {
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
     @Resource
     UserService userService;
 
@@ -79,20 +81,6 @@ public class UserController {
         }
 
     }
-    @GetMapping("/allService")
-    public ReturnData myService(@RequestParam("detectObject") String detectObject,@RequestParam("detectProject") String detectProject){
-        try {
-            //检测对象 ，检测名称
-            ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 100));
-            return serviceFind;
-        }catch (Exception e){
-            logger.error("[CompanyController.myService][error]",e);
-            return new ReturnData<>(StateCode.FAIL.getCode(),
-                    StateCode.FAIL.getMsg(), "查询服务失败");
-        }
-    }
-
-
     //提交评分
     @PostMapping("/comment")
 //    @CrossOrigin("*")

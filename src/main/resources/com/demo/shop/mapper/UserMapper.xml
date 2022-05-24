@@ -25,6 +25,14 @@
 
     </update>
 
+    <select id="allService" resultType="ServiceFind">
+        select service_id as serviceId,detect_company as detectCompany,detect_object as detectObject,
+               detect_project as detectProject,detect_price as detectPrice,detect_time as detectTime,
+               detect_standard as detectStandard,detect_score as detectScore
+        FROM service WHERE detect_object = #{detectObject} and detect_project =  #{detectProject}
+        Order by detect_price asc , detect_score desc
+    </select>
+
     <update id="submitComment">
         --      id自增，需要怎么写并且后续好查询呢？
         update order_total set quality_score=#{qualityScore},speed_score=#{speedScore},attitude_score=#{attitudeScore},comment=#{comment})
