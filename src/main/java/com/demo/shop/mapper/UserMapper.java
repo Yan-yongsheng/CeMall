@@ -2,6 +2,7 @@ package com.demo.shop.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.demo.shop.entity.OrderTotal;
+import com.demo.shop.entity.Service;
 import com.demo.shop.entity.find.ServiceFind;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -14,7 +15,7 @@ import java.util.List;
  * @Date: 2022/5/19 19:31
  */
 @Mapper
-public interface UserMapper extends BaseMapper<OrderTotal> {
+public interface UserMapper extends BaseMapper<Service> {
     int register(String userId,String account, String password,String category);
 
     int login(String account, String password,String category);

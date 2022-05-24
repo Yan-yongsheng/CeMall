@@ -80,7 +80,7 @@ public class UserController {
 
     }
     @GetMapping("/allService")
-    public ReturnData myService(@RequestParam("detectObject") String detectObject,@RequestParam("detectProject") String detectProject){
+    public ReturnData allService(@RequestParam("detectObject") String detectObject,@RequestParam("detectProject") String detectProject){
         try {
             //检测对象 ，检测名称
             ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 100));
