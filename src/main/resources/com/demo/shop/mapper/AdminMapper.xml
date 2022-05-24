@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.shop.mapper.AdminMapper">
+
+
+    <select id="allService" resultType="ServiceFind">
+        select service_id as serviceId,detect_company as detectCompany,detect_object as detectObject,
+               detect_project as detectProject,detect_price as detectPrice,detect_time as detectTime,
+               detect_standard as detectStandard,detect_score as detectScore
+        FROM service WHERE 1=1
+        Order by create_time desc
+    </select>
+
+</mapper>

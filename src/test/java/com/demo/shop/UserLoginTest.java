@@ -1,5 +1,7 @@
 package com.demo.shop;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.demo.shop.common.ReturnData;
 import com.demo.shop.controller.UserController;
 import com.demo.shop.service.UserService;
 import org.junit.Test;
@@ -30,6 +32,18 @@ public class UserLoginTest {
             Thread.sleep(2000);
             int res = userService.login(account,password,category);
             logger.info("登录 账号：{} 密码：{} 类别： {} 结果:{}",account,password,category,res);
+        }catch (Exception e){
+            //
+        }
+
+    }
+    @Test
+    public  void testAllService(){
+        try {
+            String detectObject ="电池",detectProject ="防火性能";
+            ReturnData serviceFind = userService.allService(detectObject,detectProject, new Page<>(0, 100));
+            System.out.println(serviceFind.getData());
+            logger.info("[UserLoginTest.testAllService][run]");
         }catch (Exception e){
             //
         }

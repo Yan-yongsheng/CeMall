@@ -1,8 +1,13 @@
 package com.demo.shop.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.demo.shop.common.ReturnData;
+import com.demo.shop.common.StateCode;
 import com.demo.shop.entity.ServiceTotal;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
+import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.UserMapper;
 import com.demo.shop.service.UserService;
 import org.slf4j.Logger;
@@ -13,6 +18,7 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -53,6 +59,13 @@ public class UserServiceImpl implements UserService {
         userMapper.completeOrder(orderId,serviceId,userId,new Date());
         //要和提交评价一起吗
         return "";
+    }
+    @Override
+    public ReturnData<IPage<ServiceFind>> allService(String detectObject,String detectProject,Page<ServiceFind> page){
+        List<ServiceFind> serviceFinds = userMapper.allService(detectObject,detectProject);
+        page.setRecords(serviceFinds);
+        return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                StateCode.SUCCESS.getMsg(), page);
     }
 
     @Override

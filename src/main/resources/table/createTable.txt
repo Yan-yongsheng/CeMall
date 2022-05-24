@@ -17,3 +17,19 @@ CREATE TABLE `weight_total` (
 `attitude` int COLLATE utf8_bin DEFAULT 33,
  `createTime` datetime COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+服务表
+CREATE TABLE `service` (
+    `id` int COLLATE utf8_bin primary key auto_increment,
+  `service_id` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_company` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_object` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_project` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_price` double COLLATE utf8_bin DEFAULT 100.0,
+  `detect_time` int COLLATE utf8_bin DEFAULT 7,
+  `detect_standard` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_score` double COLLATE utf8_bin DEFAULT 4.0,
+  `create_time` datetime COLLATE utf8_bin DEFAULT NULL,
+  `update_time` datetime COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
