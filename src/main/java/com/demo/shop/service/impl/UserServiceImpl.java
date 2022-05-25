@@ -7,6 +7,7 @@ import com.demo.shop.common.StateCode;
 import com.demo.shop.entity.ServiceTotal;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
+import com.demo.shop.entity.add.RatingUploadAdd;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.UserMapper;
 import com.demo.shop.service.UserService;
@@ -42,17 +43,18 @@ public class UserServiceImpl implements UserService {
         return userMapper.login(account, password,category);
     }
     @Override
-    public String makeOrder(OrderDemandAdd orderDemandAdd){
-
-        String serviceId = orderDemandAdd.getServiceId();
-        String userId = orderDemandAdd.getUserId();
-        //生成订单号
-        String orderId = getOrderId(userId);
-        String price  = orderDemandAdd.getPrice();
-        String cycle = orderDemandAdd.getCycle();
+    public void makeOrder(OrderDemandAdd orderDemandAdd){
         //生成订单
-        userMapper.makeOrder(orderId,serviceId,userId,price,cycle,new Date());
-        return orderId;
+        try {
+            String orderNumber = getOrderNumber(orderDemandAdd.getUserName());
+            userMapper.makeOrder(orderNumber,orderDemandAdd.getDetectCompany(),orderDemandAdd.getDetectObject(),
+                    orderDemandAdd.getDetectProject(),orderDemandAdd.getDetectPrice(),orderDemandAdd.getDetectTime(),
+                    orderDemandAdd.getDetectStandard(),orderDemandAdd.getUserName(),new Date(),new Date());
+        }catch (Exception e){
+            logger.error("[UserServiceImpl.makeOrder][error]",e);
+        }
+
+//        return orderNumber;
     }
     @Override
     public String completeOrder(String orderId,String serviceId,String userId){
@@ -69,33 +71,31 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void submitComment(String orderId,String serviceId,String userId,
-                              String qualityScore,String speedScore,String attitudeScore,String comment){
-        userMapper.submitComment(orderId,serviceId,userId,qualityScore,speedScore,attitudeScore,comment);
+    public void submitComment(RatingUploadAdd ratingUploadAdd){
+        try {
+            userMapper.submitComment(ratingUploadAdd.getDetectCompany(), ratingUploadAdd.getDetectObject(), ratingUploadAdd.getDetectProject(),
+                    ratingUploadAdd.getUserName(), ratingUploadAdd.getQualityScore(), ratingUploadAdd.getSpeedScore(), ratingUploadAdd.getAttitudeScore(),
+                    new Date(),new Date(), ratingUploadAdd.getComment());
+        }catch (Exception e){
+            logger.error("[UserServiceImpl.submitComment][error]",e);
+        }
+
     }
 
 
-    private static String getOrderId(String userId){
+    private static String getOrderNumber(String userName){
         //时间（精确到毫秒）
         DateTimeFormatter ofPattern = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
         String localDate = LocalDateTime.now().format(ofPattern);
         //3位随机数
         int randomNumeric = (int)(Math.random()*900)+100;
-        //5位用户id
-        int subStrLength = 5;
-        String sUserId = userId.toString();
-        int length = sUserId.length();
-        String str;
-        if (length >= subStrLength) {
-            str = sUserId.substring(length - subStrLength, length);
-        } else {
-            str = String.format("%0" + subStrLength + "d", userId);
-        }
-        String orderNum = localDate + randomNumeric + str;
+        String orderNum = "order"+localDate + randomNumeric ;
         logger.info("订单号:{}", orderNum);
         return orderNum;
 
     }
+
+
 
     private static String getUserId(){
         long timeStamp = System.currentTimeMillis();

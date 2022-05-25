@@ -16,33 +16,29 @@ import java.util.Date;
 @TableName("rating_total")
 public class RatingTotal implements Serializable {
     private static final long serialVersionUID = 1L;
-    //比订单更细分 一笔订单中的可拆分的每一个服务可以当作一个新的
     @TableId(value = "id", type = IdType.AUTO)
     private int id;
 
-    //订单号
-    private int orderId;
+//    //订单号
+//    private int orderId;
 
-    private String serviceId;
+    private String detectCompany;
+    //检测对象
+    private String detectObject;
+    //检测项目
+    private String detectProject;
+    //用户名
+    private String userName;
 
+    private int qualityScore;
 
-    private String userId;
+    private int speedScore;
 
-    private String price;
-
-    private String cycle;
-
-    private String serviceScore;
-
-    private String qualityScore;
-
-    private String speedScore;
-
-    private String attitudeScore;
+    private int attitudeScore;
 
     private Date createTime;
 
-    private Date completeTime;
+    private Date updateTime;
 
     private String comment;
 }

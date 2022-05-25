@@ -3,6 +3,8 @@ package com.demo.shop;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.controller.UserController;
+import com.demo.shop.entity.add.OrderDemandAdd;
+import com.demo.shop.entity.add.RatingUploadAdd;
 import com.demo.shop.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +29,7 @@ public class UserLoginTest {
     @Test
     public  void testLogin(){
         try {
-            String account  = "12345ab",password = "12345",category = "1";
+            String account  = "yizhance22",password = "12345667",category = "company";
             userService.register(account,password,category);
             Thread.sleep(2000);
             int res = userService.login(account,password,category);
@@ -44,6 +46,45 @@ public class UserLoginTest {
             ReturnData serviceFind = userService.allService(detectObject,detectProject, new Page<>(0, 100));
             System.out.println(serviceFind.getData());
             logger.info("[UserLoginTest.testAllService][run]");
+        }catch (Exception e){
+            //
+        }
+
+    }
+
+    @Test
+    public  void testMakeOrder(){
+        try {
+            OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
+            orderDemandAdd.setDetectCompany("一站测测测");
+            orderDemandAdd.setDetectObject("电池");
+            orderDemandAdd.setDetectProject("防火性能");
+            orderDemandAdd.setDetectPrice(1080.5);
+            orderDemandAdd.setDetectTime(10);
+            orderDemandAdd.setDetectStandard("GB/T18287");
+            orderDemandAdd.setUserName("张三");
+           userService.makeOrder(orderDemandAdd);
+            logger.info("[UserLoginTest.testMakeOrder][run]");
+        }catch (Exception e){
+            //
+        }
+
+    }
+
+    @Test
+    public  void testComment(){
+        try {
+            RatingUploadAdd ratingUploadAdd =new RatingUploadAdd();
+            ratingUploadAdd.setDetectCompany("一站测测测");
+            ratingUploadAdd.setDetectObject("电池");
+            ratingUploadAdd.setDetectProject("防火性能");
+            ratingUploadAdd.setUserName("张三");
+            ratingUploadAdd.setQualityScore(5);
+            ratingUploadAdd.setSpeedScore(4);
+            ratingUploadAdd.setAttitudeScore(3);
+            ratingUploadAdd.setComment("态度不好");
+            userService.submitComment(ratingUploadAdd);
+            logger.info("[UserLoginTest.testComment][run]");
         }catch (Exception e){
             //
         }

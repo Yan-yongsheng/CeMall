@@ -53,17 +53,8 @@ public class CompanyServiceImpl implements CompanyService {
         String localDate = LocalDateTime.now().format(ofPattern);
         //3位随机数
         int randomNumeric = (int)(Math.random()*900)+100;
-        //5位用户id
-        int subStrLength = 5;
-        String sUserId = detectCompany;
-        int length = sUserId.length();
-        String str;
-        if (length >= subStrLength) {
-            str = sUserId.substring(length - subStrLength, length);
-        } else {
-            str = String.format("%0" + subStrLength + "d", detectCompany);
-        }
-        String orderNum = localDate + randomNumeric + str;
+
+        String orderNum = "service"+localDate + randomNumeric ;
         logger.info("服务号:{}", orderNum);
         return orderNum;
 

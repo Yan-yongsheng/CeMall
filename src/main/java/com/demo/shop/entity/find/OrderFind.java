@@ -1,10 +1,14 @@
-package com.demo.shop.entity.add;
+package com.demo.shop.entity.find;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
-public class OrderDemandAdd {
-    //提交新订单的类
+public class OrderFind {
+    //展示订单的类
+    private String orderNumber;
+
     private String detectCompany;
     //检测对象
     private String detectObject;
@@ -18,4 +22,6 @@ public class OrderDemandAdd {
     private String detectStandard;
     //用户名
     private String userName;
+    //下单时间
+    private Date createTime;
 }

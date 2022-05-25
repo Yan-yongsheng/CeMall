@@ -6,6 +6,7 @@ import com.demo.shop.common.StateCode;
 import com.demo.shop.entity.OrderTotal;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
+import com.demo.shop.entity.add.RatingUploadAdd;
 import com.demo.shop.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,8 +70,8 @@ public class UserController {
     ReturnData makeOrder(@RequestBody OrderDemandAdd orderDemandAdd) {
         try {
             userService.makeOrder(orderDemandAdd);
-                return new ReturnData<>(StateCode.SUCCESS.getCode(),
-                        StateCode.SUCCESS.getMsg(), "交易成功");
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                        StateCode.SUCCESS.getMsg(), "新增订单成功");
 
         }catch (Exception e){
             logger.error("[login] :{}",e);
@@ -95,12 +96,9 @@ public class UserController {
 
     //提交评分
     @PostMapping("/comment")
-//    @CrossOrigin("*")
-    ReturnData submitComment(@RequestBody OrderTotal orderTotal) {
+    ReturnData submitComment(@RequestBody RatingUploadAdd ratingUploadAdd) {
         try {
-            userService.completeOrder(orderTotal.getOrderId(),orderTotal.getServiceId(),orderTotal.getUserId());
-            userService.submitComment(orderTotal.getOrderId(),orderTotal.getServiceId(),orderTotal.getUserId(),
-                    orderTotal.getQualityScore(),orderTotal.getSpeedScore(),orderTotal.getAttitudeScore(),orderTotal.getComment());
+            userService.submitComment(ratingUploadAdd);
             return new ReturnData<>(StateCode.SUCCESS.getCode(),
                     StateCode.SUCCESS.getMsg(), "提交评价成功");
 
