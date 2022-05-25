@@ -38,7 +38,7 @@ public class RatingTotal implements Serializable {
 
     private Date createTime;
 
-//    private Date completeTime;
+    private Date updateTime;
 
     private String comment;
 }

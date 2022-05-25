@@ -33,3 +33,37 @@ CREATE TABLE `service` (
   `create_time` datetime COLLATE utf8_bin DEFAULT NULL,
   `update_time` datetime COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+订单表
+CREATE TABLE `order_total` (
+    `id` int COLLATE utf8_bin primary key auto_increment,
+  `order_number` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_company` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_object` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_project` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_price` double COLLATE utf8_bin DEFAULT 100.0,
+  `detect_time` int COLLATE utf8_bin DEFAULT 7,
+  `detect_standard` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `user_name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+   `quality_score` int COLLATE utf8_bin DEFAULT 4,
+  `speed_score` int COLLATE utf8_bin DEFAULT 4,
+  `attitude_score` int COLLATE utf8_bin DEFAULT 4,
+  `create_time` datetime COLLATE utf8_bin DEFAULT NULL,
+  `update_time` datetime COLLATE utf8_bin DEFAULT NULL,
+  `comment` varchar(255) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+用户评分表
+CREATE TABLE `rating_total` (
+    `id` int COLLATE utf8_bin primary key auto_increment,
+  `detect_company` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_object` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `detect_project` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `user_name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+   `quality_score` int COLLATE utf8_bin DEFAULT 4,
+  `speed_score` int COLLATE utf8_bin DEFAULT 4,
+  `attitude_score` int COLLATE utf8_bin DEFAULT 4,
+  `create_time` datetime COLLATE utf8_bin DEFAULT NULL,
+  `update_time` datetime COLLATE utf8_bin DEFAULT NULL,
+  `comment` varchar(255) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

@@ -46,7 +46,7 @@ public class OrderTotal implements Serializable {
 
     private Date createTime;
 
-    private Date completeTime;
+    private Date updateTime;
     //评论
     private String comment;
 }
