@@ -69,8 +69,8 @@ public class UserController {
     ReturnData makeOrder(@RequestBody OrderDemandAdd orderDemandAdd) {
         try {
             userService.makeOrder(orderDemandAdd);
-                return new ReturnData<>(StateCode.SUCCESS.getCode(),
-                        StateCode.SUCCESS.getMsg(), "交易成功");
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                        StateCode.SUCCESS.getMsg(), "新增订单成功");
 
         }catch (Exception e){
             logger.error("[login] :{}",e);

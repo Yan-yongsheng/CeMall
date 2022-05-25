@@ -15,12 +15,15 @@ import java.util.List;
  * @Date: 2022/5/19 19:31
  */
 @Mapper
-public interface UserMapper extends BaseMapper<Service> {
+public interface UserMapper extends BaseMapper<OrderTotal> {
     int register(String userId,String account, String password,String category);
 
     int login(String account, String password,String category);
 
-    void makeOrder(String orderId, String serviceId, String userId, String price, String cycle,Date createTime);
+    void makeOrder(@Param("orderNumber") String orderNumber,@Param("detectCompany") String detectCompany,@Param("detectObject") String detectObject,
+                   @Param("detectProject") String detectProject, @Param("detectPrice") double detectPrice,@Param("detectTime") int detectTime,
+                   @Param("detectStandard") String detectStandard,@Param("userName") String userName,
+                   @Param("createTime") Date createTime,@Param("updateTime") Date updateTime);
     void completeOrder(String orderId, String serviceId, String userId,Date completeTime);
     List<ServiceFind> allService(String detectObject,String detectProject);
     //用户提交对某项服务的评分

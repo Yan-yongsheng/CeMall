@@ -24,7 +24,7 @@ public interface UserService {
 
 //    String getOrderId(Long userId);
 
-    String makeOrder(OrderDemandAdd orderDemandAdd);
+    void makeOrder(OrderDemandAdd orderDemandAdd);
     String completeOrder(String orderId,String serviceId,String userId);
 
     ReturnData<IPage<ServiceFind>> allService(String detectObject,String detectProject,Page<ServiceFind> page);
