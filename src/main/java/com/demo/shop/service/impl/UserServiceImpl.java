@@ -7,6 +7,7 @@ import com.demo.shop.common.StateCode;
 import com.demo.shop.entity.ServiceTotal;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
+import com.demo.shop.entity.add.RatingUploadAdd;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.UserMapper;
 import com.demo.shop.service.UserService;
@@ -70,9 +71,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void submitComment(String orderId,String serviceId,String userId,
-                              String qualityScore,String speedScore,String attitudeScore,String comment){
-        userMapper.submitComment(orderId,serviceId,userId,qualityScore,speedScore,attitudeScore,comment);
+    public void submitComment(RatingUploadAdd ratingUploadAdd){
+        try {
+            userMapper.submitComment(ratingUploadAdd.getDetectCompany(), ratingUploadAdd.getDetectObject(), ratingUploadAdd.getDetectProject(),
+                    ratingUploadAdd.getUserName(), ratingUploadAdd.getQualityScore(), ratingUploadAdd.getSpeedScore(), ratingUploadAdd.getAttitudeScore(),
+                    new Date(),new Date(), ratingUploadAdd.getComment());
+        }catch (Exception e){
+            logger.error("[UserServiceImpl.submitComment][error]",e);
+        }
+
     }
 
 

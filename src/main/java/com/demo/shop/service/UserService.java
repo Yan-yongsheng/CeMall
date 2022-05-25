@@ -5,11 +5,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
+import com.demo.shop.entity.add.RatingUploadAdd;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * @Author: yys
@@ -28,7 +30,21 @@ public interface UserService {
     String completeOrder(String orderId,String serviceId,String userId);
 
     ReturnData<IPage<ServiceFind>> allService(String detectObject,String detectProject,Page<ServiceFind> page);
-
-    void submitComment(String orderId,String serviceIdList,String userId,
-                       String qualityScore,String speedScore,String attitudeScore,String comment);
+    //private String detectCompany;
+    //    //检测对象
+    //    private String detectObject;
+    //    //检测项目
+    //    private String detectProject;
+    //    //用户名
+    //    private String userName;
+    //
+    //    private int qualityScore;
+    //
+    //    private int speedScore;
+    //
+    //    private int attitudeScore;
+    //
+    //
+    //    private String comment;
+    void submitComment(RatingUploadAdd ratingUploadAdd);
 }

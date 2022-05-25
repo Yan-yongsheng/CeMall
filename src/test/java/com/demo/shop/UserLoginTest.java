@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.controller.UserController;
 import com.demo.shop.entity.add.OrderDemandAdd;
+import com.demo.shop.entity.add.RatingUploadAdd;
 import com.demo.shop.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,6 +65,26 @@ public class UserLoginTest {
             orderDemandAdd.setUserName("张三");
            userService.makeOrder(orderDemandAdd);
             logger.info("[UserLoginTest.testMakeOrder][run]");
+        }catch (Exception e){
+            //
+        }
+
+    }
+
+    @Test
+    public  void testComment(){
+        try {
+            RatingUploadAdd ratingUploadAdd =new RatingUploadAdd();
+            ratingUploadAdd.setDetectCompany("一站测测测");
+            ratingUploadAdd.setDetectObject("电池");
+            ratingUploadAdd.setDetectProject("防火性能");
+            ratingUploadAdd.setUserName("张三");
+            ratingUploadAdd.setQualityScore(5);
+            ratingUploadAdd.setSpeedScore(4);
+            ratingUploadAdd.setAttitudeScore(3);
+            ratingUploadAdd.setComment("态度不好");
+            userService.submitComment(ratingUploadAdd);
+            logger.info("[UserLoginTest.testComment][run]");
         }catch (Exception e){
             //
         }

@@ -37,11 +37,16 @@
         FROM service WHERE detect_object = #{detectObject} and detect_project =  #{detectProject}
         Order by detect_price asc , detect_score desc
     </select>
+    <insert id="submitComment">
+        insert into rating_total ( detect_company,detect_object,detect_project, user_name,quality_score,
+                                  speed_score,attitude_score,create_time, update_time,comment) values
+            (#{detectCompany}, #{detectObject},#{detectProject} ,
+             #{userName},#{qualityScore},#{speedScore},#{attitudeScore}, #{createTime},#{updateTime},#{comment} );
+    </insert>
+<!--    <update id="submitComment">-->
+<!--        &#45;&#45;      id自增，需要怎么写并且后续好查询呢？-->
+<!--        update order_total set quality_score=#{qualityScore},speed_score=#{speedScore},attitude_score=#{attitudeScore},comment=#{comment})-->
+<!--            where orderId=#{orderId} and serviceId=#{serviceId} and userId =#{userId}-->
 
-    <update id="submitComment">
-        --      id自增，需要怎么写并且后续好查询呢？
-        update order_total set quality_score=#{qualityScore},speed_score=#{speedScore},attitude_score=#{attitudeScore},comment=#{comment})
-            where orderId=#{orderId} and serviceId=#{serviceId} and userId =#{userId}
-
-    </update>
+<!--    </update>-->
 </mapper>

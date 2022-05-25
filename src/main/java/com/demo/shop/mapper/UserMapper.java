@@ -27,6 +27,11 @@ public interface UserMapper extends BaseMapper<OrderTotal> {
     void completeOrder(String orderId, String serviceId, String userId,Date completeTime);
     List<ServiceFind> allService(String detectObject,String detectProject);
     //用户提交对某项服务的评分
-    void submitComment(@Param("orderId") String orderId, @Param("serviceId") String serviceId, @Param("userId") String userId, @Param("qualityScore") String qualityScore,
-                       @Param("speedScore") String speedScore, @Param("attitudeScore") String attitudeScore, @Param("comment") String comment);
+
+    void submitComment(@Param("detectCompany") String detectCompany,@Param("detectObject") String detectObject,
+                       @Param("detectProject") String detectProject, @Param("userName") String userName,
+                       @Param("qualityScore") int qualityScore, @Param("speedScore") int speedScore,
+                       @Param("attitudeScore") int attitudeScore,
+                       @Param("createTime") Date createTime,@Param("updateTime") Date updateTime,
+                       @Param("comment") String comment);
 }
