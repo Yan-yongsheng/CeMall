@@ -94,21 +94,21 @@ public class UserController {
 
 
     //提交评分
-    @PostMapping("/comment")
-//    @CrossOrigin("*")
-    ReturnData submitComment(@RequestBody OrderTotal orderTotal) {
-        try {
-            userService.completeOrder(orderTotal.getOrderId(),orderTotal.getServiceId(),orderTotal.getUserId());
-            userService.submitComment(orderTotal.getOrderId(),orderTotal.getServiceId(),orderTotal.getUserId(),
-                    orderTotal.getQualityScore(),orderTotal.getSpeedScore(),orderTotal.getAttitudeScore(),orderTotal.getComment());
-            return new ReturnData<>(StateCode.SUCCESS.getCode(),
-                    StateCode.SUCCESS.getMsg(), "提交评价成功");
-
-        }catch (Exception e){
-            logger.error("[submitComment] :{}",e);
-            return new ReturnData<>(StateCode.FAIL.getCode(),
-                    StateCode.FAIL.getMsg(), "提交评价失败");
-        }
-
-    }
+//    @PostMapping("/comment")
+////    @CrossOrigin("*")
+//    ReturnData submitComment(@RequestBody OrderTotal orderTotal) {
+//        try {
+//            userService.completeOrder(orderTotal.getOrderId(),orderTotal.getServiceId(),orderTotal.getUserId());
+//            userService.submitComment(orderTotal.getOrderId(),orderTotal.getServiceId(),orderTotal.getUserId(),
+//                    orderTotal.getQualityScore(),orderTotal.getSpeedScore(),orderTotal.getAttitudeScore(),orderTotal.getComment());
+//            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+//                    StateCode.SUCCESS.getMsg(), "提交评价成功");
+//
+//        }catch (Exception e){
+//            logger.error("[submitComment] :{}",e);
+//            return new ReturnData<>(StateCode.FAIL.getCode(),
+//                    StateCode.FAIL.getMsg(), "提交评价失败");
+//        }
+//
+//    }
 }
