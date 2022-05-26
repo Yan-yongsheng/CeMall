@@ -80,6 +80,22 @@ public class UserController {
         }
 
     }
+    @GetMapping("/findService")
+    public ReturnData findService( String requirement){
+        try {
+            //下一步是多个怎么区分，以及返回格式问题，组合办法
+            String[] requirements = requirement.split(" ");
+            String detectObject = requirements[0],detectProject = requirements[1];
+            //检测对象 ，检测名称
+            ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 100));
+            return serviceFind;
+        }catch (Exception e){
+            logger.error("[CompanyController.myService][error]",e);
+            return new ReturnData<>(StateCode.FAIL.getCode(),
+                    StateCode.FAIL.getMsg(), "查询服务失败");
+        }
+    }
+
     @GetMapping("/allService")
     public ReturnData allService(@RequestParam("detectObject") String detectObject,@RequestParam("detectProject") String detectProject){
         try {
