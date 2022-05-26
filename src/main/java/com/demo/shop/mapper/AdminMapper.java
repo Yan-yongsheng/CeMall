@@ -3,6 +3,7 @@ package com.demo.shop.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.demo.shop.entity.OrderTotal;
 import com.demo.shop.entity.Service;
+import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -17,5 +18,6 @@ import java.util.List;
 @Mapper
 public interface AdminMapper extends BaseMapper<Service> {
     List<ServiceFind> allService();
+    List<OrderFind> allOrder();
 
 }

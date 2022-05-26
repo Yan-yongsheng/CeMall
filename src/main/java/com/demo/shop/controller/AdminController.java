@@ -38,5 +38,17 @@ public class AdminController {
                     StateCode.FAIL.getMsg(), "查询服务失败");
         }
     }
+    @GetMapping("/allOrder")
+    public ReturnData allOrder(){
+        try {
+            //检测对象 ，检测名称
+            ReturnData OrderFind = adminService.allOrder(new Page<>(0, 1000));
+            return OrderFind;
+        }catch (Exception e){
+            logger.error("[CompanyController.allOrder][error]",e);
+            return new ReturnData<>(StateCode.FAIL.getCode(),
+                    StateCode.FAIL.getMsg(), "查询服务失败");
+        }
+    }
 
 }

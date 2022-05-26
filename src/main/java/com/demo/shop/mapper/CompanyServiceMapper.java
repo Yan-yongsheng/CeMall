@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.entity.Service;
 import com.demo.shop.entity.ServiceUpload;
+import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -27,4 +28,5 @@ public interface CompanyServiceMapper extends BaseMapper<Service> {
                        @Param("createTime") Date createTime,@Param("updateTime") Date updateTime);
 
     List<ServiceFind> myService(@Param("detectCompany") String detectCompany);
+    List<OrderFind> myOrder(@Param("detectCompany") String detectCompany);
 }

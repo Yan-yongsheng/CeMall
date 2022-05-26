@@ -57,4 +57,17 @@ public class CompanyController {
                     StateCode.FAIL.getMsg(), "查询服务失败");
         }
     }
+
+    @GetMapping("/myOrder")
+    public ReturnData myOrder(@RequestParam("detectCompany")String detectCompany){
+        try {
+            //检测对象 ，检测名称
+            ReturnData OrderFind = companyService.myOrder(detectCompany,new Page<>(0, 1000));
+            return OrderFind;
+        }catch (Exception e){
+            logger.error("[CompanyController.allOrder][error]",e);
+            return new ReturnData<>(StateCode.FAIL.getCode(),
+                    StateCode.FAIL.getMsg(), "查询服务失败");
+        }
+    }
 }
