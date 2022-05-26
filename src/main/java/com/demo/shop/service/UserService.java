@@ -6,12 +6,14 @@ import com.demo.shop.common.ReturnData;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.entity.add.RatingUploadAdd;
+import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: yys
@@ -30,21 +32,8 @@ public interface UserService {
     String completeOrder(String orderId,String serviceId,String userId);
 
     ReturnData<IPage<ServiceFind>> allService(String detectObject,String detectProject,Page<ServiceFind> page);
-    //private String detectCompany;
-    //    //检测对象
-    //    private String detectObject;
-    //    //检测项目
-    //    private String detectProject;
-    //    //用户名
-    //    private String userName;
-    //
-    //    private int qualityScore;
-    //
-    //    private int speedScore;
-    //
-    //    private int attitudeScore;
-    //
-    //
-    //    private String comment;
+
+    ReturnData<IPage<OrderFind>> myOrder(String userName,Page<OrderFind> page);
+
     void submitComment(RatingUploadAdd ratingUploadAdd);
 }

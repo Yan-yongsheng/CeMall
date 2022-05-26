@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.entity.add.OrderDemandAdd;
+import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 
 /**
@@ -14,5 +15,6 @@ import com.demo.shop.entity.find.ServiceFind;
 public interface AdminService {
 
     ReturnData<IPage<ServiceFind>> allService(Page<ServiceFind> page);
+    ReturnData<IPage<OrderFind>> allOrder(Page<OrderFind> page);
 
 }

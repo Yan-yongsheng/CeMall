@@ -3,6 +3,7 @@ package com.demo.shop.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.demo.shop.entity.OrderTotal;
 import com.demo.shop.entity.Service;
+import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -26,6 +27,7 @@ public interface UserMapper extends BaseMapper<OrderTotal> {
                    @Param("createTime") Date createTime,@Param("updateTime") Date updateTime);
     void completeOrder(String orderId, String serviceId, String userId,Date completeTime);
     List<ServiceFind> allService(String detectObject,String detectProject);
+    List<OrderFind> myOrder(@Param("userName") String userName);
     //用户提交对某项服务的评分
 
     void submitComment(@Param("detectCompany") String detectCompany,@Param("detectObject") String detectObject,

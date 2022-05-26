@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.common.StateCode;
 import com.demo.shop.entity.add.OrderDemandAdd;
+import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.AdminMapper;
 import com.demo.shop.mapper.UserMapper;
@@ -38,6 +39,14 @@ public class AdminServiceImpl implements AdminService {
         page.setRecords(serviceFinds);
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
+    }
+    @Override
+    public ReturnData<IPage<OrderFind>> allOrder(Page<OrderFind> page){
+        List<OrderFind> orderFinds = adminMapper.allOrder();
+        page.setRecords(orderFinds);
+        return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                StateCode.SUCCESS.getMsg(), page);
+
     }
 
 

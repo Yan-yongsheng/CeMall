@@ -95,6 +95,18 @@ public class UserController {
                     StateCode.FAIL.getMsg(), "查询服务失败");
         }
     }
+    @GetMapping("/myOrder")
+    public ReturnData allOrder(String userName){
+        try {
+            //检测对象 ，检测名称
+            ReturnData OrderFind = userService.myOrder(userName,new Page<>(0, 100));
+            return OrderFind;
+        }catch (Exception e){
+            logger.error("[CompanyController.allOrder][error]",e);
+            return new ReturnData<>(StateCode.FAIL.getCode(),
+                    StateCode.FAIL.getMsg(), "查询服务失败");
+        }
+    }
 
     @GetMapping("/allService")
     public ReturnData allService(@RequestParam("detectObject") String detectObject,@RequestParam("detectProject") String detectProject){

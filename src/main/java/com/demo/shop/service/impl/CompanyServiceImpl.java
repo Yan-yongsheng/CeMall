@@ -6,6 +6,7 @@ import com.demo.shop.common.ReturnData;
 import com.demo.shop.common.StateCode;
 import com.demo.shop.controller.CompanyController;
 import com.demo.shop.entity.find.CategoryContent;
+import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.CompanyServiceMapper;
 import com.demo.shop.mapper.ExpertMapper;
@@ -43,6 +44,15 @@ public class CompanyServiceImpl implements CompanyService {
         page.setRecords(serviceFinds);
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
+    }
+
+    @Override
+    public ReturnData<IPage<OrderFind>> myOrder(String detect_company,Page<OrderFind> page){
+        List<OrderFind> orderFinds = companyServiceMapper.myOrder(detect_company);
+        page.setRecords(orderFinds);
+        return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                StateCode.SUCCESS.getMsg(), page);
+
     }
 
 

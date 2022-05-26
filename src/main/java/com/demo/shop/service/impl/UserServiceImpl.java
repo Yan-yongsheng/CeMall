@@ -8,6 +8,7 @@ import com.demo.shop.entity.ServiceTotal;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.entity.add.RatingUploadAdd;
+import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.UserMapper;
 import com.demo.shop.service.UserService;
@@ -68,6 +69,14 @@ public class UserServiceImpl implements UserService {
         page.setRecords(serviceFinds);
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
+    }
+    @Override
+    public ReturnData<IPage<OrderFind>> myOrder(String userName, Page<OrderFind> page){
+        List<OrderFind> orderFinds = userMapper.myOrder(userName);
+        page.setRecords(orderFinds);
+        return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                StateCode.SUCCESS.getMsg(), page);
+
     }
 
     @Override
