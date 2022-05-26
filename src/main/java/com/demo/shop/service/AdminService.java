@@ -16,5 +16,6 @@ public interface AdminService {
 
     ReturnData<IPage<ServiceFind>> allService(Page<ServiceFind> page);
     ReturnData<IPage<OrderFind>> allOrder(Page<OrderFind> page);
+    void updateRate();
 
 }
