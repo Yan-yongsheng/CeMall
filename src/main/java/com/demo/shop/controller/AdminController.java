@@ -3,11 +3,7 @@ package com.demo.shop.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.common.StateCode;
-import com.demo.shop.entity.OrderTotal;
-import com.demo.shop.entity.User;
-import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.service.AdminService;
-import com.demo.shop.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +44,19 @@ public class AdminController {
             logger.error("[CompanyController.allOrder][error]",e);
             return new ReturnData<>(StateCode.FAIL.getCode(),
                     StateCode.FAIL.getMsg(), "查询服务失败");
+        }
+    }
+
+    @GetMapping("/updateRate")
+    public ReturnData updateRate(){
+        try {
+            adminService.updateRate();
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                    StateCode.SUCCESS.getMsg(), "更新评分成功");
+        }catch (Exception e){
+            logger.error("[CompanyController.allOrder][error]",e);
+            return new ReturnData<>(StateCode.FAIL.getCode(),
+                    StateCode.FAIL.getMsg(), "更新评分失败");
         }
     }
 

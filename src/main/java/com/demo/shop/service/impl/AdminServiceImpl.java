@@ -13,6 +13,7 @@ import com.demo.shop.service.AdminService;
 import com.demo.shop.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -46,6 +47,23 @@ public class AdminServiceImpl implements AdminService {
         page.setRecords(orderFinds);
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
+
+    }
+
+//    @Scheduled(cron = "0 0 1 *  * ?")
+    @Override
+    public void updateRate(){
+        try{
+//            //update sql语句 使用加权将此服务的订单评分计算，更新到服务表中service_total
+//            List<ServiceRate> currentRates = OrderMapper.getOrderRate();
+//            for(ServiceRate serviceRate:currentRates){
+//                userDemandMapper.submitComment(serviceRate.getId(),serviceRate.getQualityScore(),serviceRate.getSpeedScore(),serviceRate.getAttitudeScore());
+//            }
+//            logger.info("更新评分成功！");
+        }catch (Exception e){
+            logger.error("更新评分失败",e);
+        }
+
 
     }
 

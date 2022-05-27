@@ -86,8 +86,8 @@ public class UserController {
             //下一步是多个怎么区分，以及返回格式问题，组合办法
             String[] requirements = requirement.split(" ");
             String detectObject = requirements[0],detectProject = requirements[1];
-            //检测对象 ，检测名称
-            ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 100));
+            //检测对象 ，检测名称  后端分页还是前端分页？
+            ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 1000));
             return serviceFind;
         }catch (Exception e){
             logger.error("[CompanyController.myService][error]",e);
@@ -99,7 +99,7 @@ public class UserController {
     public ReturnData allOrder(String userName){
         try {
             //检测对象 ，检测名称
-            ReturnData OrderFind = userService.myOrder(userName,new Page<>(0, 100));
+            ReturnData OrderFind = userService.myOrder(userName,new Page<>(0, 1000));
             return OrderFind;
         }catch (Exception e){
             logger.error("[CompanyController.allOrder][error]",e);
@@ -112,7 +112,7 @@ public class UserController {
     public ReturnData allService(@RequestParam("detectObject") String detectObject,@RequestParam("detectProject") String detectProject){
         try {
             //检测对象 ，检测名称
-            ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 100));
+            ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 1000));
             return serviceFind;
         }catch (Exception e){
             logger.error("[CompanyController.myService][error]",e);

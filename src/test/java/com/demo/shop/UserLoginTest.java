@@ -56,13 +56,13 @@ public class UserLoginTest {
     public  void testMakeOrder(){
         try {
             OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
-            orderDemandAdd.setDetectCompany("一站测测测");
+            orderDemandAdd.setDetectCompany("深圳华测集团");
             orderDemandAdd.setDetectObject("电池");
-            orderDemandAdd.setDetectProject("防火性能");
-            orderDemandAdd.setDetectPrice(1080.5);
-            orderDemandAdd.setDetectTime(10);
+            orderDemandAdd.setDetectProject("容量性能");
+            orderDemandAdd.setDetectPrice(500.5);
+            orderDemandAdd.setDetectTime(8);
             orderDemandAdd.setDetectStandard("GB/T18287");
-            orderDemandAdd.setUserName("张三");
+            orderDemandAdd.setUserName("王五");
            userService.makeOrder(orderDemandAdd);
             logger.info("[UserLoginTest.testMakeOrder][run]");
         }catch (Exception e){
