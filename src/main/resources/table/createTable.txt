@@ -56,6 +56,8 @@ CREATE TABLE `order_total` (
 用户评分表
 CREATE TABLE `rating_total` (
     `id` int COLLATE utf8_bin primary key auto_increment,
+    `order_number` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    `service_id` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `detect_company` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `detect_object` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `detect_project` varchar(255) COLLATE utf8_bin DEFAULT NULL,

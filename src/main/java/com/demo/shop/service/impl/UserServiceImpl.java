@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void submitComment(RatingUploadAdd ratingUploadAdd){
         try {
-            userMapper.submitComment(ratingUploadAdd.getDetectCompany(), ratingUploadAdd.getDetectObject(), ratingUploadAdd.getDetectProject(),
+            userMapper.submitComment(ratingUploadAdd.getOrderNumber(), ratingUploadAdd.getServiceId(), ratingUploadAdd.getDetectCompany(), ratingUploadAdd.getDetectObject(), ratingUploadAdd.getDetectProject(),
                     ratingUploadAdd.getUserName(), ratingUploadAdd.getQualityScore(), ratingUploadAdd.getSpeedScore(), ratingUploadAdd.getAttitudeScore(),
                     new Date(),new Date(), ratingUploadAdd.getComment());
         }catch (Exception e){

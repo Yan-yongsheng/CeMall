@@ -45,9 +45,9 @@
         Order by create_time desc
     </select>
     <insert id="submitComment">
-        insert into rating_total ( detect_company,detect_object,detect_project, user_name,quality_score,
+        insert into rating_total ( order_number,service_id,detect_company,detect_object,detect_project, user_name,quality_score,
                                   speed_score,attitude_score,create_time, update_time,comment) values
-            (#{detectCompany}, #{detectObject},#{detectProject} ,
+            (#{orderNumber},#{serviceId},#{detectCompany}, #{detectObject},#{detectProject} ,
              #{userName},#{qualityScore},#{speedScore},#{attitudeScore}, #{createTime},#{updateTime},#{comment} );
     </insert>
 <!--    <update id="submitComment">-->

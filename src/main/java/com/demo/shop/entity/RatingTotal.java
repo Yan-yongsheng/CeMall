@@ -21,6 +21,9 @@ public class RatingTotal implements Serializable {
 
 //    //订单号
 //    private int orderId;
+    private String orderNumber;
+
+    private String serviceId;
 
     private String detectCompany;
     //检测对象

@@ -30,7 +30,7 @@ public interface UserMapper extends BaseMapper<OrderTotal> {
     List<OrderFind> myOrder(@Param("userName") String userName);
     //用户提交对某项服务的评分
 
-    void submitComment(@Param("detectCompany") String detectCompany,@Param("detectObject") String detectObject,
+    void submitComment(@Param("orderNumber") String orderNumber,@Param("serviceId") String serviceId,@Param("detectCompany") String detectCompany,@Param("detectObject") String detectObject,
                        @Param("detectProject") String detectProject, @Param("userName") String userName,
                        @Param("qualityScore") int qualityScore, @Param("speedScore") int speedScore,
                        @Param("attitudeScore") int attitudeScore,

@@ -15,6 +15,9 @@ import java.util.Date;
 @Data
 public class RatingUploadAdd {
 
+    private String orderNumber;
+
+    private String serviceId;
 
     private String detectCompany;
     //检测对象
