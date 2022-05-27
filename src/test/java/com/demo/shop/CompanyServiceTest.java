@@ -26,16 +26,20 @@ public class CompanyServiceTest {
     @Test
     public  void testUpdate(){
         try {
-            ServiceUploadAdd serviceUploadAdd =new ServiceUploadAdd();
-            serviceUploadAdd.setDetectCompany("一站测测测测");
-            serviceUploadAdd.setDetectObject("电池");
-            serviceUploadAdd.setDetectProject("防火性能");
-            serviceUploadAdd.setDetectPrice(12324.5);
-            serviceUploadAdd.setDetectTime(8);
-            serviceUploadAdd.setDetectStandard("GB/T18287");
-            companyService.uploadService(serviceUploadAdd.getDetectCompany(),serviceUploadAdd.getDetectObject(),
-                    serviceUploadAdd.getDetectProject(),serviceUploadAdd.getDetectPrice(),
-                    serviceUploadAdd.getDetectTime(),serviceUploadAdd.getDetectStandard());
+            for(int i=0;i<100;i++){
+                ServiceUploadAdd serviceUploadAdd =new ServiceUploadAdd();
+                serviceUploadAdd.setDetectCompany("ceCom"+i);
+                serviceUploadAdd.setDetectObject("电池");
+                serviceUploadAdd.setDetectProject("性能"+i);
+                serviceUploadAdd.setDetectPrice(i*i);
+                serviceUploadAdd.setDetectTime(8);
+                serviceUploadAdd.setDetectStandard("GB/T18287");
+                companyService.uploadService(serviceUploadAdd.getDetectCompany(),serviceUploadAdd.getDetectObject(),
+                        serviceUploadAdd.getDetectProject(),serviceUploadAdd.getDetectPrice(),
+                        serviceUploadAdd.getDetectTime(),serviceUploadAdd.getDetectStandard());
+
+            }
+
             logger.info("[CompanyServiceTest.testUpdate][run]");
         }catch (Exception e){
             //
