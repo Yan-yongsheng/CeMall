@@ -27,7 +27,7 @@ public class UserController {
 
 
     @PostMapping("/register")
-//    @CrossOrigin("*")  本地不用跨域
+    @CrossOrigin("*")
     ReturnData register(@RequestBody User user) {
         try {
             userService.register(user.getAccount(), user.getPassword(), user.getCategory());
@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-        //    @CrossOrigin("*")  本地不用跨域
+    @CrossOrigin("*")
     ReturnData login(@RequestBody User user) {
         try {
             int res = userService.login(user.getAccount(), user.getPassword(), user.getCategory());
@@ -66,7 +66,7 @@ public class UserController {
 
     }
     @PostMapping("/makeOrder")
-//    @CrossOrigin("*")
+    @CrossOrigin("*")
     ReturnData makeOrder(@RequestBody OrderDemandAdd orderDemandAdd) {
         try {
             userService.makeOrder(orderDemandAdd);
@@ -81,6 +81,7 @@ public class UserController {
 
     }
     @GetMapping("/findService")
+    @CrossOrigin("*")
     public ReturnData findService( String requirement){
         try {
             //下一步是多个怎么区分，以及返回格式问题，组合办法
@@ -96,6 +97,7 @@ public class UserController {
         }
     }
     @GetMapping("/myOrder")
+    @CrossOrigin("*")
     public ReturnData allOrder(String userName){
         try {
             //检测对象 ，检测名称
@@ -109,6 +111,7 @@ public class UserController {
     }
 
     @GetMapping("/allService")
+    @CrossOrigin("*")
     public ReturnData allService(@RequestParam("detectObject") String detectObject,@RequestParam("detectProject") String detectProject){
         try {
             //检测对象 ，检测名称
@@ -124,6 +127,7 @@ public class UserController {
 
     //提交评分
     @PostMapping("/comment")
+    @CrossOrigin("*")
     ReturnData submitComment(@RequestBody RatingUploadAdd ratingUploadAdd) {
         try {
             userService.submitComment(ratingUploadAdd);

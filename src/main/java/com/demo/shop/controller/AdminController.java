@@ -23,6 +23,7 @@ public class AdminController {
 
 
     @GetMapping("/allService")
+    @CrossOrigin("*")
     public ReturnData allService(){
         try {
             //检测对象 ，检测名称
@@ -35,6 +36,7 @@ public class AdminController {
         }
     }
     @GetMapping("/allOrder")
+    @CrossOrigin("*")
     public ReturnData allOrder(){
         try {
             //检测对象 ，检测名称
@@ -48,6 +50,7 @@ public class AdminController {
     }
 
     @GetMapping("/updateRate")
+    @CrossOrigin("*")
     public ReturnData updateRate(){
         try {
             adminService.updateRate();

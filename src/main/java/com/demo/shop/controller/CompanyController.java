@@ -30,6 +30,7 @@ public class CompanyController {
 
 
     @PostMapping("/uploadService")
+    @CrossOrigin("*")
     public ReturnData uploadService(@RequestBody ServiceUploadAdd serviceUploadAdd){
         try {
             companyService.uploadService(serviceUploadAdd.getDetectCompany(),serviceUploadAdd.getDetectObject(),
@@ -45,6 +46,7 @@ public class CompanyController {
     }
 
     @GetMapping("/myService")
+    @CrossOrigin("*")
     public ReturnData myService(@RequestParam("detectCompany") String detectCompany){
         try {
 //            Page<ServiceFind> page =new Page();
@@ -59,6 +61,7 @@ public class CompanyController {
     }
 
     @GetMapping("/myOrder")
+    @CrossOrigin("*")
     public ReturnData myOrder(@RequestParam("detectCompany")String detectCompany){
         try {
             //检测对象 ，检测名称
