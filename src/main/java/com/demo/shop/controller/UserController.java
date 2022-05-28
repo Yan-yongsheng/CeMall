@@ -69,6 +69,7 @@ public class UserController {
     @CrossOrigin("*")
     ReturnData makeOrder(@RequestBody OrderDemandAdd orderDemandAdd) {
         try {
+            logger.info("[UserController.makeOrder][run]");
             userService.makeOrder(orderDemandAdd);
             return new ReturnData<>(StateCode.SUCCESS.getCode(),
                         StateCode.SUCCESS.getMsg(), "新增订单成功");
@@ -84,6 +85,7 @@ public class UserController {
     @CrossOrigin("*")
     public ReturnData findService( String requirement){
         try {
+            logger.info("[UserController.findService][run]");
             //下一步是多个怎么区分，以及返回格式问题，组合办法
             String[] requirements = requirement.split(" ");
             String detectObject = requirements[0],detectProject = requirements[1];
@@ -100,6 +102,7 @@ public class UserController {
     @CrossOrigin("*")
     public ReturnData allOrder(String userName){
         try {
+            logger.info("[UserController.allOrder][run]");
             //检测对象 ，检测名称
             ReturnData OrderFind = userService.myOrder(userName,new Page<>(0, 1000));
             return OrderFind;
@@ -114,6 +117,7 @@ public class UserController {
     @CrossOrigin("*")
     public ReturnData allService(@RequestParam("detectObject") String detectObject,@RequestParam("detectProject") String detectProject){
         try {
+            logger.info("[UserController.allService][run]");
             //检测对象 ，检测名称
             ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 1000));
             return serviceFind;
@@ -130,6 +134,7 @@ public class UserController {
     @CrossOrigin("*")
     ReturnData submitComment(@RequestBody RatingUploadAdd ratingUploadAdd) {
         try {
+            logger.info("[UserController.submitComment][run]");
             userService.submitComment(ratingUploadAdd);
             return new ReturnData<>(StateCode.SUCCESS.getCode(),
                     StateCode.SUCCESS.getMsg(), "提交评价成功");

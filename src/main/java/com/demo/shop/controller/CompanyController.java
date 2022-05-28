@@ -33,6 +33,7 @@ public class CompanyController {
     @CrossOrigin("*")
     public ReturnData uploadService(@RequestBody ServiceUploadAdd serviceUploadAdd){
         try {
+            logger.info("[CompanyController.uploadService][run]");
             companyService.uploadService(serviceUploadAdd.getDetectCompany(),serviceUploadAdd.getDetectObject(),
                     serviceUploadAdd.getDetectProject(),serviceUploadAdd.getDetectPrice(),
                     serviceUploadAdd.getDetectTime(),serviceUploadAdd.getDetectStandard());
@@ -49,6 +50,7 @@ public class CompanyController {
     @CrossOrigin("*")
     public ReturnData myService(@RequestParam("detectCompany") String detectCompany){
         try {
+            logger.info("[CompanyController.myService][run]");
 //            Page<ServiceFind> page =new Page();
 //            page.setSize(1000);
             ReturnData serviceFind = companyService.myService(detectCompany,new Page<>(0, 1000));
@@ -64,6 +66,8 @@ public class CompanyController {
     @CrossOrigin("*")
     public ReturnData myOrder(@RequestParam("detectCompany")String detectCompany){
         try {
+            logger.info("[CompanyController.myOrder][run]");
+
             //检测对象 ，检测名称
             ReturnData OrderFind = companyService.myOrder(detectCompany,new Page<>(0, 1000));
             return OrderFind;

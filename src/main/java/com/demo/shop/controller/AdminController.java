@@ -26,6 +26,7 @@ public class AdminController {
     @CrossOrigin("*")
     public ReturnData allService(){
         try {
+            logger.info("[AdminController.allService][run]");
             //检测对象 ，检测名称
             ReturnData serviceFind = adminService.allService(new Page<>(0, 1000));
             return serviceFind;
@@ -39,6 +40,7 @@ public class AdminController {
     @CrossOrigin("*")
     public ReturnData allOrder(){
         try {
+            logger.info("[AdminController.allOrder][run]");
             //检测对象 ，检测名称
             ReturnData OrderFind = adminService.allOrder(new Page<>(0, 1000));
             return OrderFind;
@@ -53,6 +55,7 @@ public class AdminController {
     @CrossOrigin("*")
     public ReturnData updateRate(){
         try {
+            logger.info("[AdminController.updateRate][run]");
             adminService.updateRate();
             return new ReturnData<>(StateCode.SUCCESS.getCode(),
                     StateCode.SUCCESS.getMsg(), "更新评分成功");
