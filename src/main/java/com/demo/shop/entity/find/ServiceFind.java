@@ -1,16 +1,23 @@
 package com.demo.shop.entity.find;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import lombok.Data;
 
 @Data
+@Document(indexName = "CeMall", type = "ServiceFind")
 public class ServiceFind {
     //服务Id 自动生成 时间+公司
     private String serviceId;
 
     private String detectCompany;
     //检测对象
+    @Field(type = FieldType.Text, analyzer = "ik_smart",searchAnalyzer = "ik_smart")
     private String detectObject;
     //检测项目
+    @Field(type = FieldType.Text, analyzer = "ik_smart",searchAnalyzer = "ik_smart")
     private String detectProject;
     //检测价格
     private double detectPrice;
