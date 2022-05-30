@@ -25,6 +25,7 @@ public class ExpertController {
     @CrossOrigin("*")
     ReturnData uploadRateWeight(@RequestBody RateWeightAdd rateWeightAdd) {
         try {
+            logger.info("[ExpertController.uploadRateWeight][run]");
             expertService.updateWeight(rateWeightAdd);
             logger.info("[ExpertController.uploadRateWeight][success]");
             return new ReturnData<>(StateCode.SUCCESS.getCode(),
