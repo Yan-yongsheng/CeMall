@@ -62,3 +62,11 @@ spring:
         login-username: admin
 
       aop-patterns: com.demo.shop.service.*
+
+  elasticsearch:
+    rest:
+      uris: http://127.0.0.1:9200
+      # username: xxx
+      # password: yyy
+      # connection-timeout: 1
+      # read-timeout: 30
