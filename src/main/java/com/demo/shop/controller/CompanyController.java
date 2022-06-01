@@ -9,6 +9,7 @@ import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.entity.add.ServiceUploadAdd;
 import com.demo.shop.entity.find.ServiceFind;
+import com.demo.shop.service.AdminService;
 import com.demo.shop.service.CompanyService;
 import com.demo.shop.service.UserService;
 import org.slf4j.Logger;
@@ -27,6 +28,8 @@ public class CompanyController {
     private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
     @Resource
     CompanyService companyService ;
+    @Resource
+    AdminService adminService;
 
 
     @PostMapping("/uploadService")
@@ -43,6 +46,23 @@ public class CompanyController {
             logger.error("[CompanyController.uploadService][error]",e);
             return new ReturnData<>(StateCode.FAIL.getCode(),
                     StateCode.FAIL.getMsg(), "发布服务失败");
+        }
+    }
+
+    @GetMapping("/deleteService")
+    @CrossOrigin("*")
+    public ReturnData deleteService(@RequestParam("serviceId") String serviceId){
+        try {
+            logger.info("[CompanyController.deleteService][run]");
+            //目前使用adminService
+            //如果需要修改，可以使用company的接口
+            adminService.deleteService(serviceId);
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                    StateCode.SUCCESS.getMsg(), "删除服务成功");
+        }catch (Exception e){
+            logger.error("[CompanyController.allOrder][error]",e);
+            return new ReturnData<>(StateCode.FAIL.getCode(),
+                    StateCode.FAIL.getMsg(), "删除服务失败");
         }
     }
 

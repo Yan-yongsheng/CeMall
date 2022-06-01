@@ -20,4 +20,5 @@ public interface CompanyService {
 
     ReturnData<IPage<ServiceFind>> myService(String detectCompany, Page<ServiceFind> page);
     ReturnData<IPage<OrderFind>> myOrder(String detect_company,Page<OrderFind> page);
+
 }

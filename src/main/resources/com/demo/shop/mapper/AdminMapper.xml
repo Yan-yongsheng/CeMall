@@ -22,4 +22,12 @@
         Order by create_time desc
     </select>
 
+    <delete id="deleteService">
+        delete from service where service_id=#{serviceId}
+    </delete>
+
+    <delete id="deleteOrder">
+        delete from order_total where order_number=#{orderNumber}
+    </delete>
+
 </mapper>

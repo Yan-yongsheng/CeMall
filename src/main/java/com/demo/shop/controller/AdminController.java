@@ -65,5 +65,34 @@ public class AdminController {
                     StateCode.FAIL.getMsg(), "更新评分失败");
         }
     }
+    @GetMapping("/deleteService")
+    @CrossOrigin("*")
+    public ReturnData deleteService(@RequestParam("serviceId") String serviceId){
+        try {
+            logger.info("[AdminController.deleteService][run]");
+            adminService.deleteService(serviceId);
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                    StateCode.SUCCESS.getMsg(), "删除服务成功");
+        }catch (Exception e){
+            logger.error("[CompanyController.allOrder][error]",e);
+            return new ReturnData<>(StateCode.FAIL.getCode(),
+                    StateCode.FAIL.getMsg(), "删除服务失败");
+        }
+    }
+
+    @GetMapping("/deleteOrder")
+    @CrossOrigin("*")
+    public ReturnData deleteOrder(@RequestParam("orderNumber") String orderNumber){
+        try {
+            logger.info("[AdminController.deleteOrder][run]");
+            adminService.deleteOrder(orderNumber);
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                    StateCode.SUCCESS.getMsg(), "删除订单成功");
+        }catch (Exception e){
+            logger.error("[CompanyController.allOrder][error]",e);
+            return new ReturnData<>(StateCode.FAIL.getCode(),
+                    StateCode.FAIL.getMsg(), "删除订单失败");
+        }
+    }
 
 }

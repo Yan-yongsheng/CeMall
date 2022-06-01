@@ -87,7 +87,8 @@ public class UserController {
         try {
             logger.info("[UserController.findService][run]");
             //下一步是多个怎么区分，以及返回格式问题，组合办法
-            String[] requirements = requirement.split(" ");
+            //分割彻底，多个空格也一样，以及两边
+            String[] requirements = requirement.trim().split("\\s+");
             String detectObject = requirements[0],detectProject = requirements[1];
             //检测对象 ，检测名称  后端分页还是前端分页？
             ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 1000));
