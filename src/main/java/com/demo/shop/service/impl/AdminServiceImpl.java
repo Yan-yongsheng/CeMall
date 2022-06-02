@@ -49,6 +49,17 @@ public class AdminServiceImpl implements AdminService {
                 StateCode.SUCCESS.getMsg(), page);
 
     }
+    @Override
+    public void deleteService(String serviceId){
+        adminMapper.deleteService(serviceId);
+
+    }
+
+    @Override
+    public void deleteOrder(String orderNumber){
+        adminMapper.deleteOrder(orderNumber);
+
+    }
 
 //    @Scheduled(cron = "0 0 1 *  * ?")
     @Override

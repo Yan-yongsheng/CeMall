@@ -1,5 +1,6 @@
 package com.demo.shop.entity.find;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -10,6 +11,7 @@ import lombok.Data;
 @Document(indexName = "CeMall", type = "ServiceFind")
 public class ServiceFind {
     //服务Id 自动生成 时间+公司
+    @Id
     private String serviceId;
 
     private String detectCompany;

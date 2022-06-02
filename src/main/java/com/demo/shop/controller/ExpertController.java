@@ -21,7 +21,7 @@ public class ExpertController {
     @Resource
     ExpertService expertService;
 
-    @PostMapping("/uploadRateWeight/")
+    @PostMapping("/uploadRateWeight")
     @CrossOrigin("*")
     ReturnData uploadRateWeight(@RequestBody RateWeightAdd rateWeightAdd) {
         try {

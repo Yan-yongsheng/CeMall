@@ -36,8 +36,9 @@ public class EsFindServiceController {
     @GetMapping("/findService")
     public ReturnData findService(String requirement){
         try {
-            //下一步是多个怎么区分，以及返回格式问题，组合办法
-            String[] requirements = requirement.split(" ");
+            //多个项目进行查询并且组合返回
+            //error No property detectObject found for type ReturnData!
+            String[] requirements = requirement.trim().split("\\s+");
             String detectObject = requirements[0],detectProject = requirements[1];
             //检测对象 ，检测名称  后端分页还是前端分页？
             ReturnData serviceFind = esFindService.search(detectObject,detectProject,new Page<>(0, 1000));

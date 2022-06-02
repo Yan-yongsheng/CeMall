@@ -19,5 +19,7 @@ import java.util.List;
 public interface AdminMapper extends BaseMapper<Service> {
     List<ServiceFind> allService();
     List<OrderFind> allOrder();
+    void deleteService(@Param("serviceId") String serviceId);
+    void deleteOrder(@Param("orderNumber") String orderNumber);
 
 }
