@@ -38,6 +38,7 @@ public class AdminServiceImpl implements AdminService {
     public ReturnData<IPage<ServiceFind>> allService(Page<ServiceFind> page){
         List<ServiceFind> serviceFinds = adminMapper.allService();
         page.setRecords(serviceFinds);
+        page.setTotal(serviceFinds.size());
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
     }
@@ -45,6 +46,7 @@ public class AdminServiceImpl implements AdminService {
     public ReturnData<IPage<OrderFind>> allOrder(Page<OrderFind> page){
         List<OrderFind> orderFinds = adminMapper.allOrder();
         page.setRecords(orderFinds);
+        page.setTotal(orderFinds.size());
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
 

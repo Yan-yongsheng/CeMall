@@ -42,6 +42,7 @@ public class CompanyServiceImpl implements CompanyService {
     public ReturnData<IPage<ServiceFind>> myService(String detectCompany, Page<ServiceFind> page){
         List<ServiceFind> serviceFinds = companyServiceMapper.myService(detectCompany);
         page.setRecords(serviceFinds);
+        page.setTotal(serviceFinds.size());
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
     }
@@ -50,6 +51,7 @@ public class CompanyServiceImpl implements CompanyService {
     public ReturnData<IPage<OrderFind>> myOrder(String detect_company,Page<OrderFind> page){
         List<OrderFind> orderFinds = companyServiceMapper.myOrder(detect_company);
         page.setRecords(orderFinds);
+        page.setTotal(orderFinds.size());
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
 
