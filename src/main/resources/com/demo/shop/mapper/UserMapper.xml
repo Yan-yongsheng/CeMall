@@ -16,9 +16,9 @@
                        double detectPrice,int detectTime,String detectStandard,String userName,
                        Date createTime,Date updateTime-->
     <insert id="makeOrder">
-        insert into order_total (order_number, detect_company,detect_object,detect_project, detect_price,detect_time,
+        insert into order_total (order_number,service_id, detect_company,detect_object,detect_project, detect_price,detect_time,
                                  detect_standard, user_name,create_time, update_time) values
-            (#{orderNumber},#{detectCompany}, #{detectObject},#{detectProject} ,
+            (#{orderNumber},#{serviceId},#{detectCompany}, #{detectObject},#{detectProject} ,
              #{detectPrice},#{detectTime},#{detectStandard},#{userName}, #{createTime},#{updateTime} );
     </insert>
 <!--    completeOrder(String orderId, String serviceId, String userId,Date completeTime);-->

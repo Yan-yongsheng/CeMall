@@ -64,6 +64,7 @@ public class UserLoginTest {
         try {
             for(int i=0;i<100;i++){
                 OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
+                orderDemandAdd.setServiceId("service"+System.currentTimeMillis()+i);
                 orderDemandAdd.setDetectCompany("ceCom"+i);
                 orderDemandAdd.setDetectObject("电池");
                 orderDemandAdd.setDetectProject("性能"+i);

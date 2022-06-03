@@ -135,6 +135,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+<!--            <version>6.2.2</version>-->
         </dependency>
 
     </dependencies>

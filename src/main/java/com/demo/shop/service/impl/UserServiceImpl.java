@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
         //生成订单
         try {
             String orderNumber = getOrderNumber(orderDemandAdd.getUserName());
-            userMapper.makeOrder(orderNumber,orderDemandAdd.getDetectCompany(),orderDemandAdd.getDetectObject(),
+            userMapper.makeOrder(orderNumber,orderDemandAdd.getServiceId(),orderDemandAdd.getDetectCompany(),orderDemandAdd.getDetectObject(),
                     orderDemandAdd.getDetectProject(),orderDemandAdd.getDetectPrice(),orderDemandAdd.getDetectTime(),
                     orderDemandAdd.getDetectStandard(),orderDemandAdd.getUserName(),new Date(),new Date());
         }catch (Exception e){
@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService {
     public ReturnData<IPage<ServiceFind>> allService(String detectObject,String detectProject,Page<ServiceFind> page){
         List<ServiceFind> serviceFinds = userMapper.allService(detectObject,detectProject);
         page.setRecords(serviceFinds);
+        page.setTotal(serviceFinds.size());
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
     }
@@ -74,6 +75,7 @@ public class UserServiceImpl implements UserService {
     public ReturnData<IPage<OrderFind>> myOrder(String userName, Page<OrderFind> page){
         List<OrderFind> orderFinds = userMapper.myOrder(userName);
         page.setRecords(orderFinds);
+        page.setTotal(orderFinds.size());
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
 

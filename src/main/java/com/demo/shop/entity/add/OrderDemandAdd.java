@@ -6,6 +6,8 @@ import lombok.Data;
 public class OrderDemandAdd {
     //提交新订单的类
     private String detectCompany;
+
+    private String serviceId;
     //检测对象
     private String detectObject;
     //检测项目
