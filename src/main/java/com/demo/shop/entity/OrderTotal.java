@@ -23,6 +23,8 @@ public class OrderTotal implements Serializable {
 
     private String orderNumber;
 
+    private String serviceId;
+
     private String detectCompany;
     //检测对象
     private String detectObject;

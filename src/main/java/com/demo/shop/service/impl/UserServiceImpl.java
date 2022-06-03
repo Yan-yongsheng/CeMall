@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
         //生成订单
         try {
             String orderNumber = getOrderNumber(orderDemandAdd.getUserName());
-            userMapper.makeOrder(orderNumber,orderDemandAdd.getDetectCompany(),orderDemandAdd.getDetectObject(),
+            userMapper.makeOrder(orderNumber,orderDemandAdd.getServiceId(),orderDemandAdd.getDetectCompany(),orderDemandAdd.getDetectObject(),
                     orderDemandAdd.getDetectProject(),orderDemandAdd.getDetectPrice(),orderDemandAdd.getDetectTime(),
                     orderDemandAdd.getDetectStandard(),orderDemandAdd.getUserName(),new Date(),new Date());
         }catch (Exception e){

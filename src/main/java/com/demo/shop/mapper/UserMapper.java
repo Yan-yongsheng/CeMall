@@ -21,7 +21,7 @@ public interface UserMapper extends BaseMapper<OrderTotal> {
 
     int login(String account, String password,String category);
 
-    void makeOrder(@Param("orderNumber") String orderNumber,@Param("detectCompany") String detectCompany,@Param("detectObject") String detectObject,
+    void makeOrder(@Param("orderNumber") String orderNumber,@Param("serviceId") String serviceId,@Param("detectCompany") String detectCompany,@Param("detectObject") String detectObject,
                    @Param("detectProject") String detectProject, @Param("detectPrice") double detectPrice,@Param("detectTime") int detectTime,
                    @Param("detectStandard") String detectStandard,@Param("userName") String userName,
                    @Param("createTime") Date createTime,@Param("updateTime") Date updateTime);

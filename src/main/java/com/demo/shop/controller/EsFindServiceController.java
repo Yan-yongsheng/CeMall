@@ -2,12 +2,14 @@ package com.demo.shop.controller;
 
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.common.StateCode;
+import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.service.EsFindService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
 
 
 @RestController
@@ -41,8 +43,11 @@ public class EsFindServiceController {
             String[] requirements = requirement.trim().split("\\s+");
             String detectObject = requirements[0],detectProject = requirements[1];
             //检测对象 ，检测名称  后端分页还是前端分页？
-            ReturnData serviceFind = esFindService.search(detectObject,detectProject,new Page<>(0, 1000));
-            return serviceFind;
+
+            Page<ServiceFind> serviceFindPage = esFindService.search(detectObject,detectProject,0,100);
+
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                    StateCode.SUCCESS.getMsg(), serviceFindPage);
         }catch (Exception e){
             logger.error("[EsFindServiceController.findService][error]",e);
             return new ReturnData<>(StateCode.FAIL.getCode(),

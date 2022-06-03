@@ -6,7 +6,9 @@ import com.demo.shop.mapper.AdminMapper;
 import com.demo.shop.service.EsFindService;
 import com.demo.shop.service.EsFindServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.demo.shop.common.ReturnData;
 
@@ -35,9 +37,9 @@ public class EsFindServiceImpl implements EsFindService{
     }
 
     @Override
-    public ReturnData<IPage<ServiceFind>> search(String detectObject, String detectProject, Page<ServiceFind> page) {
+    public Page<ServiceFind> search(String detectObject, String detectProject, Integer pageNum,Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
 
-        ReturnData<IPage<ServiceFind>> serviceFinds = esFindServiceRepository.findByDetectObjectAndDetectProject(detectObject, detectProject, page);
-        return  serviceFinds;
+        return esFindServiceRepository.findByDetectObjectAndDetectProject(detectObject, detectProject, pageable);
     }
 }

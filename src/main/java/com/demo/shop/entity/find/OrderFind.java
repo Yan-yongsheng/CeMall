@@ -9,6 +9,8 @@ public class OrderFind {
     //展示订单的类
     private String orderNumber;
 
+    private String serviceId;
+
     private String detectCompany;
     //检测对象
     private String detectObject;
