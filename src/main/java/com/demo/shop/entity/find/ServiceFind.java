@@ -8,7 +8,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import lombok.Data;
 
 @Data
-@Document(indexName = "CeMall", type = "ServiceFind")
+@Document(indexName = "cemall", type = "ServiceFind")
 public class ServiceFind {
     //服务Id 自动生成 时间+公司
     @Id

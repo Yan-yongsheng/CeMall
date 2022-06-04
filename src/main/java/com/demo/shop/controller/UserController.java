@@ -96,6 +96,7 @@ public class UserController {
             for(int i=1;i<requirements.length;i++){
                 detectProjects.add(requirements[i]);
             }
+            //之后将每项查询返回一个list，之后放入一个总的list进行组合，最后放入page
             //检测对象 ，检测名称  后端分页还是前端分页？
             ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 1000));
             return serviceFind;

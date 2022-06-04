@@ -20,7 +20,7 @@ public class EsFindServiceController {
     private EsFindService esFindService;
 
     @PostMapping("/importAll")
-    ReturnData importAll() {
+    public ReturnData importAll() {
         try {
             esFindService.importAll();
             logger.info("[EsFindServiceController.importAll][success]");
