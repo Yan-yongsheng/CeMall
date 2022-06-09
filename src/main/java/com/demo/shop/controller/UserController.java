@@ -7,6 +7,7 @@ import com.demo.shop.entity.OrderTotal;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.entity.add.RatingUploadAdd;
+import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -88,18 +89,24 @@ public class UserController {
     public ReturnData findService( String requirement){
         try {
             logger.info("[UserController.findService][run]");
-            //下一步是多个怎么区分，以及返回格式问题，组合办法
-            //分割彻底，多个空格也一样，以及两边
+
             String[] requirements = requirement.trim().split("\\s+");
-            String detectObject = requirements[0],detectProject = requirements[1];
-            List<String> detectProjects = new ArrayList<>();
-            for(int i=1;i<requirements.length;i++){
-                detectProjects.add(requirements[i]);
+            if(requirements.length<2){
+                return new ReturnData<>(StateCode.FAIL.getCode(),
+                        StateCode.FAIL.getMsg(), "查询失败，请输入对象与项目，使用空格分隔");
             }
-            //之后将每项查询返回一个list，之后放入一个总的list进行组合，最后放入page
-            //检测对象 ，检测名称  后端分页还是前端分页？
-            ReturnData serviceFind = userService.allService(detectObject,detectProject,new Page<>(0, 1000));
-            return serviceFind;
+            Page<ServiceFind> page =new Page<>();
+            List<ServiceFind> res = new ArrayList<>();
+            String detectObject = requirements[0];
+            for(int i=1;i<requirements.length;i++){
+                List<ServiceFind> curProjects = userService.findService(detectObject,requirements[i]);
+                res.addAll(curProjects);
+            }
+            page.setRecords(res);
+            page.setTotal(res.size());
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                    StateCode.SUCCESS.getMsg(), page);
+
         }catch (Exception e){
             logger.error("[CompanyController.myService][error]",e);
             return new ReturnData<>(StateCode.FAIL.getCode(),
@@ -110,12 +117,12 @@ public class UserController {
     @CrossOrigin("*")
     public ReturnData allOrder(String userName){
         try {
-            logger.info("[UserController.allOrder][run]");
+            logger.info("[UserController./myOrder][run][userName]{}",userName);
             //检测对象 ，检测名称
             ReturnData OrderFind = userService.myOrder(userName,new Page<>(0, 1000));
             return OrderFind;
         }catch (Exception e){
-            logger.error("[CompanyController.allOrder][error]",e);
+            logger.error("[CompanyController./myOrder][error]",e);
             return new ReturnData<>(StateCode.FAIL.getCode(),
                     StateCode.FAIL.getMsg(), "查询服务失败");
         }

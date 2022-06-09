@@ -35,7 +35,7 @@
                detect_project as detectProject,detect_price as detectPrice,detect_time as detectTime,
                detect_standard as detectStandard,detect_score as detectScore
         FROM service WHERE detect_object = #{detectObject} and detect_project =  #{detectProject}
-        Order by detect_price asc , detect_score desc
+        Order by detect_price asc , detect_score desc ,detect_time asc
     </select>
     <select id="myOrder" resultType="OrderFind">
         select order_number as orderNumber,detect_company as detectCompany,detect_object as detectObject,

@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Random;
+
 /**
  * @Author: yys
  * @Date: 2022/5/23 21:37
@@ -26,14 +28,54 @@ public class CompanyServiceTest {
     @Test
     public  void testUpdate(){
         try {
-            for(int i=0;i<100;i++){
+            Random random =new Random();
+            for(int i=0;i<10;i++){
                 ServiceUploadAdd serviceUploadAdd =new ServiceUploadAdd();
-                serviceUploadAdd.setDetectCompany("ceCom"+i);
-                serviceUploadAdd.setDetectObject("电池");
-                serviceUploadAdd.setDetectProject("性能"+i);
-                serviceUploadAdd.setDetectPrice(i*i);
-                serviceUploadAdd.setDetectTime(8);
-                serviceUploadAdd.setDetectStandard("GB/T18287");
+                serviceUploadAdd.setDetectCompany("company"+i);
+                serviceUploadAdd.setDetectObject("新能源");
+                serviceUploadAdd.setDetectProject("锂电池");
+                serviceUploadAdd.setDetectPrice(random.nextInt(1000)+200);
+                serviceUploadAdd.setDetectTime(random.nextInt(10)+3);
+                serviceUploadAdd.setDetectStandard("GB/T100"+i);
+                companyService.uploadService(serviceUploadAdd.getDetectCompany(),serviceUploadAdd.getDetectObject(),
+                        serviceUploadAdd.getDetectProject(),serviceUploadAdd.getDetectPrice(),
+                        serviceUploadAdd.getDetectTime(),serviceUploadAdd.getDetectStandard());
+
+            }
+            for(int i=0;i<10;i++){
+                ServiceUploadAdd serviceUploadAdd =new ServiceUploadAdd();
+                serviceUploadAdd.setDetectCompany("company"+i);
+                serviceUploadAdd.setDetectObject("新能源");
+                serviceUploadAdd.setDetectProject("轮胎");
+                serviceUploadAdd.setDetectPrice(random.nextInt(1000)+200);
+                serviceUploadAdd.setDetectTime(random.nextInt(10)+3);
+                serviceUploadAdd.setDetectStandard("GB/T100"+i);
+                companyService.uploadService(serviceUploadAdd.getDetectCompany(),serviceUploadAdd.getDetectObject(),
+                        serviceUploadAdd.getDetectProject(),serviceUploadAdd.getDetectPrice(),
+                        serviceUploadAdd.getDetectTime(),serviceUploadAdd.getDetectStandard());
+
+            }
+            for(int i=0;i<10;i++){
+                ServiceUploadAdd serviceUploadAdd =new ServiceUploadAdd();
+                serviceUploadAdd.setDetectCompany("company"+i);
+                serviceUploadAdd.setDetectObject("新能源");
+                serviceUploadAdd.setDetectProject("发动机");
+                serviceUploadAdd.setDetectPrice(random.nextInt(1000)+200);
+                serviceUploadAdd.setDetectTime(random.nextInt(10)+3);
+                serviceUploadAdd.setDetectStandard("GB/T100"+i);
+                companyService.uploadService(serviceUploadAdd.getDetectCompany(),serviceUploadAdd.getDetectObject(),
+                        serviceUploadAdd.getDetectProject(),serviceUploadAdd.getDetectPrice(),
+                        serviceUploadAdd.getDetectTime(),serviceUploadAdd.getDetectStandard());
+
+            }
+            for(int i=0;i<5;i++){
+                ServiceUploadAdd serviceUploadAdd =new ServiceUploadAdd();
+                serviceUploadAdd.setDetectCompany("company"+i);
+                serviceUploadAdd.setDetectObject("新能源");
+                serviceUploadAdd.setDetectProject("机动装置");
+                serviceUploadAdd.setDetectPrice(random.nextInt(1000)+200);
+                serviceUploadAdd.setDetectTime(random.nextInt(10)+3);
+                serviceUploadAdd.setDetectStandard("GB/T100"+i);
                 companyService.uploadService(serviceUploadAdd.getDetectCompany(),serviceUploadAdd.getDetectObject(),
                         serviceUploadAdd.getDetectProject(),serviceUploadAdd.getDetectPrice(),
                         serviceUploadAdd.getDetectTime(),serviceUploadAdd.getDetectStandard());

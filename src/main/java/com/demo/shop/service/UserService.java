@@ -33,6 +33,8 @@ public interface UserService {
 
     ReturnData<IPage<ServiceFind>> allService(String detectObject,String detectProject,Page<ServiceFind> page);
 
+    List<ServiceFind> findService(String detectObject,String detectProject);
+
     ReturnData<IPage<OrderFind>> myOrder(String userName,Page<OrderFind> page);
 
     void submitComment(RatingUploadAdd ratingUploadAdd);

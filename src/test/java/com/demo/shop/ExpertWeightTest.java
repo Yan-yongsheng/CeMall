@@ -26,12 +26,12 @@ public class ExpertWeightTest {
     @Test
     public  void testExpert(){
         try {
-            for(int i=0;i<100;i++){
+            for(int i=0;i<10;i++){
                 RateWeightAdd rateWeightAdd  = new RateWeightAdd();
                 rateWeightAdd.setAccount("expert"+i);
-                rateWeightAdd.setQuality(20);
-                rateWeightAdd.setSpeed(50);
-                rateWeightAdd.setAttitude(30);
+                rateWeightAdd.setQuality(20+i);
+                rateWeightAdd.setSpeed(50-2*i);
+                rateWeightAdd.setAttitude(30+i);
                 expertService.updateWeight(rateWeightAdd);
             }
 

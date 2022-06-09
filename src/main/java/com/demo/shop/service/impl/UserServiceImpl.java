@@ -72,6 +72,12 @@ public class UserServiceImpl implements UserService {
                 StateCode.SUCCESS.getMsg(), page);
     }
     @Override
+    public List<ServiceFind> findService(String detectObject,String detectProject){
+        List<ServiceFind> serviceFinds = userMapper.allService(detectObject,detectProject);
+        return serviceFinds.subList(0,Math.min(10,serviceFinds.size()));
+
+    }
+    @Override
     public ReturnData<IPage<OrderFind>> myOrder(String userName, Page<OrderFind> page){
         List<OrderFind> orderFinds = userMapper.myOrder(userName);
         page.setRecords(orderFinds);

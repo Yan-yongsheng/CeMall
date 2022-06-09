@@ -29,14 +29,20 @@ public class UserLoginTest {
     @Test
     public  void testLogin(){
         try {
-            for(int i=0;i<100;i++){
-                String account  = "ceCom"+i,password = "12345667"+i,category = "company";
+            for(int i=0;i<10;i++){
+                String account  = "user"+i,password = "user"+i,category = "user";
                 userService.register(account,password,category);
             }
-            for(int i=0;i<100;i++){
-                String account  = "user"+i,password = "1234567"+i,category = "user";
+            for(int i=0;i<10;i++){
+                String account  = "company"+i,password = "company"+i,category = "company";
                 userService.register(account,password,category);
             }
+            for(int i=0;i<10;i++){
+                String account  = "expert"+i,password = "expert"+i,category = "expert";
+                userService.register(account,password,category);
+            }
+            String account  = "admin",password = "admin",category = "admin";
+            userService.register(account,password,category);
 
             Thread.sleep(2000);
 //            int res = userService.login(account,password,category);
@@ -62,15 +68,27 @@ public class UserLoginTest {
     @Test
     public  void testMakeOrder(){
         try {
-            for(int i=0;i<100;i++){
+//            for(int i=0;i<5;i++){
+//                OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
+//                orderDemandAdd.setServiceId("service20220609222537255587");
+//                orderDemandAdd.setDetectCompany("company0");
+//                orderDemandAdd.setDetectObject("新能源");
+//                orderDemandAdd.setDetectProject("锂电池");
+//                orderDemandAdd.setDetectPrice(353);
+//                orderDemandAdd.setDetectTime(12);
+//                orderDemandAdd.setDetectStandard("GB/T1000");
+//                orderDemandAdd.setUserName("user"+i);
+//                userService.makeOrder(orderDemandAdd);
+//            }
+            for(int i=0;i<10;i++){
                 OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
-                orderDemandAdd.setServiceId("service"+System.currentTimeMillis()+i);
-                orderDemandAdd.setDetectCompany("ceCom"+i);
-                orderDemandAdd.setDetectObject("电池");
-                orderDemandAdd.setDetectProject("性能"+i);
-                orderDemandAdd.setDetectPrice(i*i);
-                orderDemandAdd.setDetectTime(i);
-                orderDemandAdd.setDetectStandard("GB/T18287");
+                orderDemandAdd.setServiceId("service20220609222537684838");
+                orderDemandAdd.setDetectCompany("company2");
+                orderDemandAdd.setDetectObject("新能源");
+                orderDemandAdd.setDetectProject("轮胎");
+                orderDemandAdd.setDetectPrice(264);
+                orderDemandAdd.setDetectTime(7);
+                orderDemandAdd.setDetectStandard("GB/T1002");
                 orderDemandAdd.setUserName("user"+i);
                 userService.makeOrder(orderDemandAdd);
             }
