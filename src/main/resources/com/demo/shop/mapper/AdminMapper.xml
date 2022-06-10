@@ -21,6 +21,19 @@
         FROM order_total WHERE 1=1
         Order by create_time desc
     </select>
+    <select id="findWeight" resultType="RateWeightFind">
+        select avg(quality) as quality,avg(speed) as speed,avg(attitude) as attitude
+        FROM weight_total WHERE 1=1
+    </select>
+    <select id="getOrderRate" resultType="ServiceRate">
+        select service_id as serviceId,round(AVG(quality_score),2) as qualityScore,
+               round(AVG(speed_score),2) as speedScore,round(AVG(attitude_score),2) as attitudeScore
+        FROM order_total WHERE create_time > DATE_SUB(CURDATE(), INTERVAL 3 MONTH)
+        GROUP BY service_id
+    </select>
+    <update id="updateServiceRate">
+        update service set detect_score=#{detectScore} where service_id=#{serviceId}
+    </update>
 
     <delete id="deleteService">
         delete from service where service_id=#{serviceId}

@@ -6,6 +6,7 @@ import com.demo.shop.common.ReturnData;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.entity.add.RatingUploadAdd;
+import com.demo.shop.entity.add.UpdateRateAdd;
 import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.UserMapper;
@@ -38,4 +39,6 @@ public interface UserService {
     ReturnData<IPage<OrderFind>> myOrder(String userName,Page<OrderFind> page);
 
     void submitComment(RatingUploadAdd ratingUploadAdd);
+
+    void updateRate(UpdateRateAdd updateRateAdd);
 }

@@ -11,7 +11,7 @@ import lombok.Data;
 public class ServiceRate {
     //用于暂存service和三项评分
     //服务id
-    private Integer id;
+    private String serviceId;
     //质量评分
     private Integer qualityScore;
 

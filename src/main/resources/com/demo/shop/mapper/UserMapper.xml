@@ -38,7 +38,7 @@
         Order by detect_price asc , detect_score desc ,detect_time asc
     </select>
     <select id="myOrder" resultType="OrderFind">
-        select order_number as orderNumber,detect_company as detectCompany,detect_object as detectObject,
+        select order_number as orderNumber,service_id as serviceId,detect_company as detectCompany,detect_object as detectObject,
                detect_project as detectProject,detect_price as detectPrice,detect_time as detectTime,
                detect_standard as detectStandard,user_name as userName, create_time as createTime
         FROM order_total WHERE 1=1 and user_name = #{userName}
@@ -50,10 +50,11 @@
             (#{orderNumber},#{serviceId},#{detectCompany}, #{detectObject},#{detectProject} ,
              #{userName},#{qualityScore},#{speedScore},#{attitudeScore}, #{createTime},#{updateTime},#{comment} );
     </insert>
-<!--    <update id="submitComment">-->
-<!--        &#45;&#45;      id自增，需要怎么写并且后续好查询呢？-->
-<!--        update order_total set quality_score=#{qualityScore},speed_score=#{speedScore},attitude_score=#{attitudeScore},comment=#{comment})-->
-<!--            where orderId=#{orderId} and serviceId=#{serviceId} and userId =#{userId}-->
+    <update id="updateRate">
 
-<!--    </update>-->
+        update order_total set quality_score=#{qualityScore},speed_score=#{speedScore},attitude_score=#{attitudeScore},comment_new=#{commentNew},
+                            update_time=#{updateTime}
+            where order_number=#{orderNumber} and user_name=#{userName}
+
+    </update>
 </mapper>

@@ -51,7 +51,7 @@ CREATE TABLE `order_total` (
   `attitude_score` int COLLATE utf8_bin DEFAULT 4,
   `create_time` datetime COLLATE utf8_bin DEFAULT NULL,
   `update_time` datetime COLLATE utf8_bin DEFAULT NULL,
-  `comment` varchar(255) COLLATE utf8_bin DEFAULT NULL
+  `comment_new` varchar(255) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 用户评分表

@@ -50,5 +50,5 @@ public class OrderTotal implements Serializable {
 
     private Date updateTime;
     //评论
-    private String comment;
+    private String commentNew;
 }

@@ -41,7 +41,7 @@ public class UserLoginTest {
                 String account  = "expert"+i,password = "expert"+i,category = "expert";
                 userService.register(account,password,category);
             }
-            String account  = "admin",password = "admin",category = "admin";
+            String account  = "admin",password = "admin",category = "manger";
             userService.register(account,password,category);
 
             Thread.sleep(2000);
@@ -68,18 +68,18 @@ public class UserLoginTest {
     @Test
     public  void testMakeOrder(){
         try {
-//            for(int i=0;i<5;i++){
-//                OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
-//                orderDemandAdd.setServiceId("service20220609222537255587");
-//                orderDemandAdd.setDetectCompany("company0");
-//                orderDemandAdd.setDetectObject("新能源");
-//                orderDemandAdd.setDetectProject("锂电池");
-//                orderDemandAdd.setDetectPrice(353);
-//                orderDemandAdd.setDetectTime(12);
-//                orderDemandAdd.setDetectStandard("GB/T1000");
-//                orderDemandAdd.setUserName("user"+i);
-//                userService.makeOrder(orderDemandAdd);
-//            }
+            for(int i=0;i<7;i++){
+                OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
+                orderDemandAdd.setServiceId("service20220609222537255587");
+                orderDemandAdd.setDetectCompany("company0");
+                orderDemandAdd.setDetectObject("新能源");
+                orderDemandAdd.setDetectProject("锂电池");
+                orderDemandAdd.setDetectPrice(353);
+                orderDemandAdd.setDetectTime(12);
+                orderDemandAdd.setDetectStandard("GB/T1000");
+                orderDemandAdd.setUserName("user"+i);
+                userService.makeOrder(orderDemandAdd);
+            }
             for(int i=0;i<10;i++){
                 OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
                 orderDemandAdd.setServiceId("service20220609222537684838");

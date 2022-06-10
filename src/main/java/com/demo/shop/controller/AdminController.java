@@ -51,18 +51,18 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/updateRate")
+    @GetMapping("/updateAllRate")
     @CrossOrigin("*")
     public ReturnData updateRate(){
         try {
-            logger.info("[AdminController.updateRate][run]");
+            logger.info("[AdminController.updateAllRate][run]");
             adminService.updateRate();
             return new ReturnData<>(StateCode.SUCCESS.getCode(),
                     StateCode.SUCCESS.getMsg(), "更新评分成功");
         }catch (Exception e){
-            logger.error("[CompanyController.allOrder][error]",e);
+            logger.error("[AdminController.updateAllRate][error]",e);
             return new ReturnData<>(StateCode.FAIL.getCode(),
-                    StateCode.FAIL.getMsg(), "更新评分失败");
+                    StateCode.FAIL.getMsg(), "更新所有评分失败");
         }
     }
     @GetMapping("/deleteService")

@@ -36,4 +36,10 @@ public interface UserMapper extends BaseMapper<OrderTotal> {
                        @Param("attitudeScore") int attitudeScore,
                        @Param("createTime") Date createTime,@Param("updateTime") Date updateTime,
                        @Param("comment") String comment);
+
+    void updateRate(@Param("orderNumber") String orderNumber, @Param("userName") String userName,
+                       @Param("qualityScore") int qualityScore, @Param("speedScore") int speedScore,
+                       @Param("attitudeScore") int attitudeScore,
+                       @Param("updateTime") Date updateTime,
+                       @Param("commentNew") String commentNew);
 }

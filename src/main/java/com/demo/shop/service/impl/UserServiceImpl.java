@@ -8,6 +8,7 @@ import com.demo.shop.entity.ServiceTotal;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.entity.add.RatingUploadAdd;
+import com.demo.shop.entity.add.UpdateRateAdd;
 import com.demo.shop.entity.find.OrderFind;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.UserMapper;
@@ -84,6 +85,17 @@ public class UserServiceImpl implements UserService {
         page.setTotal(orderFinds.size());
         return new ReturnData<>(StateCode.SUCCESS.getCode(),
                 StateCode.SUCCESS.getMsg(), page);
+
+    }
+    @Override
+    public void updateRate(UpdateRateAdd updateRateAdd){
+        try {
+            userMapper.updateRate(updateRateAdd.getOrderNumber(), updateRateAdd.getUserName(), updateRateAdd.getQuality(),
+                    updateRateAdd.getSpeed(), updateRateAdd.getAttitude(), new Date(), updateRateAdd.getComment());
+
+        }catch (Exception e){
+            logger.error("[UserServiceImpl.updateRate][error]",e);
+        }
 
     }
 

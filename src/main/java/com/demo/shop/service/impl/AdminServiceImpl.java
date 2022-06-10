@@ -4,10 +4,13 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.shop.common.ReturnData;
 import com.demo.shop.common.StateCode;
+import com.demo.shop.entity.ServiceRate;
 import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.entity.find.OrderFind;
+import com.demo.shop.entity.find.RateWeightFind;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.mapper.AdminMapper;
+import com.demo.shop.mapper.OrderMapper;
 import com.demo.shop.mapper.UserMapper;
 import com.demo.shop.service.AdminService;
 import com.demo.shop.service.UserService;
@@ -67,12 +70,21 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void updateRate(){
         try{
-//            //update sql语句 使用加权将此服务的订单评分计算，更新到服务表中service_total
-//            List<ServiceRate> currentRates = OrderMapper.getOrderRate();
-//            for(ServiceRate serviceRate:currentRates){
-//                userDemandMapper.submitComment(serviceRate.getId(),serviceRate.getQualityScore(),serviceRate.getSpeedScore(),serviceRate.getAttitudeScore());
-//            }
-//            logger.info("更新评分成功！");
+            //先搞到加权，之后对订单进行遍历，之后将加权分更新到service中
+            RateWeightFind rateWeightFind =adminMapper.findWeight();
+            logger.info("[AdminServiceImpl.updateRate][quality]{}[speed]{}[attitude]{}",rateWeightFind.getQuality(),
+                    rateWeightFind.getSpeed(),rateWeightFind.getAttitude());
+
+            //update sql语句 使用加权将此服务的订单评分计算，更新到服务表中service_total
+            List<ServiceRate> currentRates = adminMapper.getOrderRate();
+            logger.info("[currentRates.size]{}",currentRates.size());
+            for(ServiceRate serviceRate:currentRates){
+                double detectScore = serviceRate.getQualityScore()* rateWeightFind.getQuality()+
+                        serviceRate.getSpeedScore()* rateWeightFind.getSpeed()+
+                        serviceRate.getAttitudeScore()* rateWeightFind.getAttitude();
+                adminMapper.updateServiceRate(serviceRate.getServiceId(),detectScore/100.0);
+            }
+            logger.info("更新所有服务评分成功！");
         }catch (Exception e){
             logger.error("更新评分失败",e);
         }

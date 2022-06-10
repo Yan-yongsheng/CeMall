@@ -7,6 +7,7 @@ import com.demo.shop.entity.OrderTotal;
 import com.demo.shop.entity.User;
 import com.demo.shop.entity.add.OrderDemandAdd;
 import com.demo.shop.entity.add.RatingUploadAdd;
+import com.demo.shop.entity.add.UpdateRateAdd;
 import com.demo.shop.entity.find.ServiceFind;
 import com.demo.shop.service.UserService;
 import org.slf4j.Logger;
@@ -72,7 +73,7 @@ public class UserController {
     @CrossOrigin("*")
     ReturnData makeOrder(@RequestBody OrderDemandAdd orderDemandAdd) {
         try {
-            logger.info("[UserController.makeOrder][run]");
+            logger.info("[UserController.makeOrder][run][user]{}",orderDemandAdd.getUserName());
             userService.makeOrder(orderDemandAdd);
             return new ReturnData<>(StateCode.SUCCESS.getCode(),
                         StateCode.SUCCESS.getMsg(), "新增订单成功");
@@ -143,11 +144,35 @@ public class UserController {
         }
     }
 
+    //提交评分
+    @PostMapping("/updateRate")
+    @CrossOrigin("*")
+    ReturnData updateRate(@RequestBody UpdateRateAdd updateRateAdd) {
+        //需要修改流程
+        //上传的只有评分与orderNumber，username，其余的需要去查出来，然后放入
+
+        try {
+            logger.info("[UserController.updateRate][run]");
+            userService.updateRate(updateRateAdd);
+            return new ReturnData<>(StateCode.SUCCESS.getCode(),
+                    StateCode.SUCCESS.getMsg(), "提交新评价成功");
+
+        }catch (Exception e){
+            logger.error("[submitComment] :{}",e);
+            return new ReturnData<>(StateCode.FAIL.getCode(),
+                    StateCode.FAIL.getMsg(), "提交评价失败");
+        }
+
+    }
+
 
     //提交评分
     @PostMapping("/comment")
     @CrossOrigin("*")
     ReturnData submitComment(@RequestBody RatingUploadAdd ratingUploadAdd) {
+        //需要修改流程
+        //上传的只有评分与orderNumber，username，其余的需要去查出来，然后放入
+
         try {
             logger.info("[UserController.submitComment][run]");
             userService.submitComment(ratingUploadAdd);
