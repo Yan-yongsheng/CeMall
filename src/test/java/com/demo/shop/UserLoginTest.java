@@ -70,25 +70,25 @@ public class UserLoginTest {
         try {
             for(int i=0;i<7;i++){
                 OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
-                orderDemandAdd.setServiceId("service20220609222537255587");
+                orderDemandAdd.setServiceId("service20220609222537668478");
                 orderDemandAdd.setDetectCompany("company0");
                 orderDemandAdd.setDetectObject("新能源");
-                orderDemandAdd.setDetectProject("锂电池");
-                orderDemandAdd.setDetectPrice(353);
-                orderDemandAdd.setDetectTime(12);
+                orderDemandAdd.setDetectProject("轮胎");
+                orderDemandAdd.setDetectPrice(241);
+                orderDemandAdd.setDetectTime(5);
                 orderDemandAdd.setDetectStandard("GB/T1000");
                 orderDemandAdd.setUserName("user"+i);
                 userService.makeOrder(orderDemandAdd);
             }
             for(int i=0;i<10;i++){
                 OrderDemandAdd orderDemandAdd =new OrderDemandAdd();
-                orderDemandAdd.setServiceId("service20220609222537684838");
-                orderDemandAdd.setDetectCompany("company2");
+                orderDemandAdd.setServiceId("service20220609222537744509");
+                orderDemandAdd.setDetectCompany("company1");
                 orderDemandAdd.setDetectObject("新能源");
-                orderDemandAdd.setDetectProject("轮胎");
-                orderDemandAdd.setDetectPrice(264);
-                orderDemandAdd.setDetectTime(7);
-                orderDemandAdd.setDetectStandard("GB/T1002");
+                orderDemandAdd.setDetectProject("发动机");
+                orderDemandAdd.setDetectPrice(259);
+                orderDemandAdd.setDetectTime(10);
+                orderDemandAdd.setDetectStandard("GB/T100");
                 orderDemandAdd.setUserName("user"+i);
                 userService.makeOrder(orderDemandAdd);
             }

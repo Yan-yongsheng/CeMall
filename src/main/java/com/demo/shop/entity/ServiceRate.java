@@ -13,11 +13,11 @@ public class ServiceRate {
     //服务id
     private String serviceId;
     //质量评分
-    private Integer qualityScore;
+    private double qualityScore;
 
     //速度评分
-    private Integer speedScore;
+    private double speedScore;
 
     //态度评分
-    private Integer attitudeScore;
+    private double attitudeScore;
 }

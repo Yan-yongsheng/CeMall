@@ -79,10 +79,14 @@ public class AdminServiceImpl implements AdminService {
             List<ServiceRate> currentRates = adminMapper.getOrderRate();
             logger.info("[currentRates.size]{}",currentRates.size());
             for(ServiceRate serviceRate:currentRates){
+                logger.info("[serviceId]{}[qualityScore]{}[speedScore]{}[attitudeScore]{}",serviceRate.getServiceId(),serviceRate.getQualityScore(),
+                        serviceRate.getSpeedScore(),serviceRate.getAttitudeScore());
                 double detectScore = serviceRate.getQualityScore()* rateWeightFind.getQuality()+
                         serviceRate.getSpeedScore()* rateWeightFind.getSpeed()+
                         serviceRate.getAttitudeScore()* rateWeightFind.getAttitude();
-                adminMapper.updateServiceRate(serviceRate.getServiceId(),detectScore/100.0);
+                String  str = String.format("%.0f",detectScore);
+                double score = Double.parseDouble(str);
+                adminMapper.updateServiceRate(serviceRate.getServiceId(),score/100.0);
             }
             logger.info("更新所有服务评分成功！");
         }catch (Exception e){
