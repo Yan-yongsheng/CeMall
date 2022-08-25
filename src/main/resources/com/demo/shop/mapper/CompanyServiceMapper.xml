@@ -12,7 +12,7 @@
                 FROM service WHERE detect_company = #{detectCompany}
     </select>
     <select id="myOrder" resultType="OrderFind">
-        select order_number as orderNumber,detect_company as detectCompany,detect_object as detectObject,
+        select order_number as orderNumber,service_id as serviceId,detect_company as detectCompany,detect_object as detectObject,
                detect_project as detectProject,detect_price as detectPrice,detect_time as detectTime,
                detect_standard as detectStandard,user_name as userName, create_time as createTime
         FROM order_total WHERE 1=1 and detect_company = #{detectCompany}
